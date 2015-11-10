@@ -1,0 +1,8 @@
+<div class="formRegistro">
+	<form action="#" th:action="j_spring_security_check" method="post" th:id="'form-'+${modulo.idModulo}+'-'+${modulo.idModulo}+'-'+${modulo.nombreModulo}">
+    	<div class="formLabel">Usuario:</div><div class="formInput"><input type='text' name='usuario' value=''></div>
+        <div class="formLabel">Contraseña:</div><div class="formInput"><input type='password' name='clave' /></div>
+        <div class="formButtom"><input name="submit" type="submit" value="Accesar" /></div>
+	</form>
+</div>
+<div id="error" th:if="${param.LoginError != null}"><span>! </span>Oops, error credenciales<span> :( </span></div>
