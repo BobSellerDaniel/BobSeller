@@ -104,3 +104,15 @@
 2015-11-10 13:48:32,426 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\BobSeller\bobSeller\src\main\resources
 2015-11-10 13:48:32,429 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2015-11-10 13:48:32,429 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\BobSeller\bobSeller\src\test\resources
+2015-11-10 14:13:17,741 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-11-10 14:13:17,742 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\BobSeller\bobSeller\src\main\resources
+2015-11-10 14:13:17,743 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-11-10 14:13:17,744 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\BobSeller\bobSeller\src\test\resources
+2015-11-10 16:26:29,022 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: bobSeller:bobSeller:0.0.1-SNAPSHOT @ D:\BobSeller\bobSeller\pom.xml.
+2015-11-10 16:26:53,420 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /bobSeller/src
+2015-11-10 16:26:53,421 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /bobSeller/src/test/java because it overlaps with /bobSeller/src
+2015-11-10 16:27:02,920 [Worker-12] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 50 sec
+2015-11-10 16:27:15,842 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-11-10 16:27:15,844 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\BobSeller\bobSeller\src\main\resources
+2015-11-10 16:27:15,846 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-11-10 16:27:15,847 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\BobSeller\bobSeller\src\test\resources
