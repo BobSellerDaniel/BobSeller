@@ -1,0 +1,256 @@
+oct 30, 2015 5:46:29 AM org.apache.catalina.startup.Catalina stopServer
+GRAVE: Could not contact localhost:8005. Tomcat may not be running.
+oct 30, 2015 5:46:29 AM org.apache.catalina.startup.Catalina stopServer
+GRAVE: Catalina.stop: 
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:370)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:457)
+
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Server version:        Apache Tomcat/7.0.64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Server built:          Aug 19 2015 17:18:06 UTC
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Server number:         7.0.64.0
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: OS Name:               Windows 7
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: OS Version:            6.1
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Architecture:          amd64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Java Home:             C:\Program Files\Java\jdk1.8.0_60\jre
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: JVM Version:           1.8.0_60-b27
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: JVM Vendor:            Oracle Corporation
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: CATALINA_BASE:         C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: CATALINA_HOME:         C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Command line argument: -Djava.util.logging.config.file=C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\conf\logging.properties
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Command line argument: -Djava.endorsed.dirs=C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\endorsed
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Command line argument: -Dcatalina.base=C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Command line argument: -Dcatalina.home=C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.VersionLoggerListener log
+INFORMACIÓN: Command line argument: -Djava.io.tmpdir=C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\temp
+oct 30, 2015 5:47:18 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFORMACIÓN: La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: C:\Program Files\Java\jdk1.8.0_60\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Diskeeper Corporation\ExpressCache\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\EmEditor;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Diskeeper Corporation\ExpressCache\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\EmEditor;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files\TortoiseSVN\bin;C:\PROGRA~2\Rutter\VDR;.
+oct 30, 2015 5:47:18 AM org.apache.coyote.AbstractProtocol init
+INFORMACIÓN: Initializing ProtocolHandler ["http-bio-8080"]
+oct 30, 2015 5:47:18 AM org.apache.coyote.AbstractProtocol init
+INFORMACIÓN: Initializing ProtocolHandler ["ajp-bio-8009"]
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.Catalina load
+INFORMACIÓN: Initialization processed in 598 ms
+oct 30, 2015 5:47:18 AM org.apache.catalina.core.StandardService startInternal
+INFORMACIÓN: Arrancando servicio Catalina
+oct 30, 2015 5:47:18 AM org.apache.catalina.core.StandardEngine startInternal
+INFORMACIÓN: Starting Servlet Engine: Apache Tomcat/7.0.64
+oct 30, 2015 5:47:18 AM org.apache.catalina.startup.HostConfig deployWAR
+INFORMACIÓN: Despliegue del archivo C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\55-springwebapp.war de la aplicación web
+oct 30, 2015 5:47:21 AM org.apache.catalina.startup.TldConfig execute
+INFORMACIÓN: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+oct 30, 2015 5:47:21 AM org.springframework.web.context.ContextLoader initWebApplicationContext
+INFORMACIÓN: Root WebApplicationContext: initialization started
+oct 30, 2015 5:47:21 AM org.springframework.web.context.support.XmlWebApplicationContext prepareRefresh
+INFORMACIÓN: Refreshing Root WebApplicationContext: startup date [Fri Oct 30 05:47:21 COT 2015]; root of context hierarchy
+oct 30, 2015 5:47:21 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFORMACIÓN: Loading XML bean definitions from class path resource [com/bobSeller/core/registro/config/persistence-context.xml]
+oct 30, 2015 5:47:22 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFORMACIÓN: Loading XML bean definitions from class path resource [com/bobSeller/core/registro/config/service-context.xml]
+oct 30, 2015 5:47:22 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFORMACIÓN: Loading XML bean definitions from class path resource [com/bobSeller/core/registro/config/security-context.xml]
+oct 30, 2015 5:47:22 AM org.springframework.security.core.SpringSecurityCoreVersion performVersionChecks
+INFORMACIÓN: You are running with Spring Security Core 3.2.7.RELEASE
+oct 30, 2015 5:47:22 AM org.springframework.security.config.SecurityNamespaceHandler <init>
+INFORMACIÓN: Spring Security 'config' module version is 3.2.7.RELEASE
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'permitAll' for /
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'permitAll' for /index
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'permitAll' for /css/**
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'permitAll' for /js/**
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'isAuthenticated()' for /about
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'isAuthenticated()' for /admin
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'hasAnyRole({'ROLE_ROOT','ROLE_ADMIN'})' for /admin/**
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'hasRole('ROLE_ADMIN')' for /direccion/**
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser parseInterceptUrlsForFilterInvocationRequestMap
+INFORMACIÓN: Creating access control expression attribute 'denyAll' for /**
+oct 30, 2015 5:47:22 AM org.springframework.security.config.http.HttpSecurityBeanDefinitionParser checkFilterChainOrder
+INFORMACIÓN: Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 700, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1100, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1600, Root bean: class [org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2000, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2300]
+oct 30, 2015 5:47:22 AM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+oct 30, 2015 5:47:22 AM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.3.8.Final}
+oct 30, 2015 5:47:22 AM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+oct 30, 2015 5:47:22 AM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+oct 30, 2015 5:47:23 AM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+oct 30, 2015 5:47:24 AM org.hibernate.mapping.RootClass checkCompositeIdentifier
+WARN: HHH000038: Composite-id class does not override equals(): com.bobSeller.core.registro.pojo.mapeo_hook
+oct 30, 2015 5:47:24 AM org.hibernate.mapping.RootClass checkCompositeIdentifier
+WARN: HHH000039: Composite-id class does not override hashCode(): com.bobSeller.core.registro.pojo.mapeo_hook
+oct 30, 2015 5:47:24 AM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+oct 30, 2015 5:47:24 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+oct 30, 2015 5:47:24 AM org.hibernate.validator.internal.util.Version <clinit>
+INFO: HV000001: Hibernate Validator 5.1.3.Final
+oct 30, 2015 5:47:25 AM org.springframework.orm.hibernate4.HibernateTransactionManager afterPropertiesSet
+INFORMACIÓN: Using DataSource [org.apache.tomcat.dbcp.dbcp.BasicDataSource@b8486ac] of Hibernate SessionFactory for HibernateTransactionManager
+oct 30, 2015 5:47:25 AM org.springframework.security.web.DefaultSecurityFilterChain <init>
+INFORMACIÓN: Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@5cc50394, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21f2b7e5, org.springframework.security.web.authentication.logout.LogoutFilter@2f98e14a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@36014804, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42ac24f3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7655eedc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1eafc3ed, org.springframework.security.web.session.SessionManagementFilter@2252e954, org.springframework.security.web.access.ExceptionTranslationFilter@17aca51, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5880e7ac]
+oct 30, 2015 5:47:25 AM org.springframework.security.config.http.DefaultFilterChainValidator checkLoginPageIsntProtected
+INFORMACIÓN: Checking whether login URL '/admin' is accessible with your configuration
+oct 30, 2015 5:47:25 AM org.springframework.security.config.http.DefaultFilterChainValidator checkLoginPageIsntProtected
+ADVERTENCIA: Anonymous access to the login page doesn't appear to be enabled. This is almost certainly an error. Please check your configuration allows unauthenticated access to the configured login page. (Simulated access was rejected: org.springframework.security.access.AccessDeniedException: Access is denied)
+oct 30, 2015 5:47:25 AM org.springframework.web.context.ContextLoader initWebApplicationContext
+INFORMACIÓN: Root WebApplicationContext: initialization completed in 4008 ms
+oct 30, 2015 5:47:25 AM org.apache.catalina.startup.HostConfig deployWAR
+INFORMACIÓN: Deployment of web application archive C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\55-springwebapp.war has finished in 7.242 ms
+oct 30, 2015 5:47:25 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Despliegue del directorio C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\docs de la aplicación web
+oct 30, 2015 5:47:25 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Deployment of web application directory C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\docs has finished in 47 ms
+oct 30, 2015 5:47:25 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Despliegue del directorio C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\examples de la aplicación web
+oct 30, 2015 5:47:25 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Deployment of web application directory C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\examples has finished in 298 ms
+oct 30, 2015 5:47:25 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Despliegue del directorio C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\host-manager de la aplicación web
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Deployment of web application directory C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\host-manager has finished in 55 ms
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Despliegue del directorio C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\manager de la aplicación web
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Deployment of web application directory C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\manager has finished in 54 ms
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Despliegue del directorio C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\ROOT de la aplicación web
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Deployment of web application directory C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\ROOT has finished in 39 ms
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Despliegue del directorio C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\Servers de la aplicación web
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFORMACIÓN: Deployment of web application directory C:\Users\daniel\eclipse\jee-mars\apache-tomcat-7.0.64\webapps\Servers has finished in 39 ms
+oct 30, 2015 5:47:26 AM org.apache.coyote.AbstractProtocol start
+INFORMACIÓN: Starting ProtocolHandler ["http-bio-8080"]
+oct 30, 2015 5:47:26 AM org.apache.coyote.AbstractProtocol start
+INFORMACIÓN: Starting ProtocolHandler ["ajp-bio-8009"]
+oct 30, 2015 5:47:26 AM org.apache.catalina.startup.Catalina start
+INFORMACIÓN: Server startup in 7850 ms
+oct 30, 2015 5:47:39 AM org.springframework.web.servlet.DispatcherServlet initServletBean
+INFORMACIÓN: FrameworkServlet 'dispatcher': initialization started
+oct 30, 2015 5:47:39 AM org.springframework.web.context.support.XmlWebApplicationContext prepareRefresh
+INFORMACIÓN: Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Oct 30 05:47:39 COT 2015]; parent: Root WebApplicationContext
+oct 30, 2015 5:47:39 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFORMACIÓN: Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+oct 30, 2015 5:47:39 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFORMACIÓN: Overriding bean definition for bean 'mvcContentNegotiationManager': replacing [Root bean: class [org.springframework.web.accept.ContentNegotiationManagerFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [org.springframework.web.accept.ContentNegotiationManagerFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+oct 30, 2015 5:47:39 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+INFORMACIÓN: Overriding bean definition for bean 'mvcUriComponentsContributor': replacing [Root bean: class [org.springframework.web.servlet.config.AnnotationDrivenBeanDefinitionParser$CompositeUriComponentsContributorFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [org.springframework.web.servlet.config.AnnotationDrivenBeanDefinitionParser$CompositeUriComponentsContributorFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+oct 30, 2015 5:47:40 AM org.springframework.context.support.ClassPathXmlApplicationContext prepareRefresh
+INFORMACIÓN: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@59c9d2f2: startup date [Fri Oct 30 05:47:40 COT 2015]; root of context hierarchy
+oct 30, 2015 5:47:40 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFORMACIÓN: Loading XML bean definitions from class path resource [hook-configuracion.xml]
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin/{idAd}/delete],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.delete(int,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin/save],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.handleAdmin(com.bobSeller.core.registro.pojo.Admin,org.springframework.ui.Model,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.showAdmin(org.springframework.ui.Model)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin/{idAd}/update],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.showUpdate(org.springframework.ui.Model,int)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/direccion/save],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.DireccionController.save(org.springframework.ui.Model,org.springframework.web.servlet.mvc.support.RedirectAttributes,com.bobSeller.core.registro.pojo.Direccion,com.bobSeller.core.registro.pojo.Admin)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/direccion/{idAd}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.DireccionController.getAll(org.springframework.ui.Model,java.lang.String,int)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/index],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.login()
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/logout],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.logout()
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/about],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.showAbout(org.springframework.web.bind.support.SessionStatus)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.showIndex(org.springframework.ui.Model) throws java.lang.ClassNotFoundException,java.lang.NoSuchMethodException,java.lang.SecurityException
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin/{idAd}/delete],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.delete(int,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin/save],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.handleAdmin(com.bobSeller.core.registro.pojo.Admin,org.springframework.ui.Model,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.showAdmin(org.springframework.ui.Model)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/admin/{idAd}/update],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.AdminController.showUpdate(org.springframework.ui.Model,int)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/direccion/save],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.DireccionController.save(org.springframework.ui.Model,org.springframework.web.servlet.mvc.support.RedirectAttributes,com.bobSeller.core.registro.pojo.Direccion,com.bobSeller.core.registro.pojo.Admin)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/direccion/{idAd}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.DireccionController.getAll(org.springframework.ui.Model,java.lang.String,int)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/index],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.login()
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/logout],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.logout()
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/about],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.showAbout(org.springframework.web.bind.support.SessionStatus)
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping registerHandlerMethod
+INFORMACIÓN: Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.bobSeller.core.registro.controller.IndexController.showIndex(org.springframework.ui.Model) throws java.lang.ClassNotFoundException,java.lang.NoSuchMethodException,java.lang.SecurityException
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.handler.SimpleUrlHandlerMapping registerHandler
+INFORMACIÓN: Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.handler.SimpleUrlHandlerMapping registerHandler
+INFORMACIÓN: Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.handler.SimpleUrlHandlerMapping registerHandler
+INFORMACIÓN: Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+oct 30, 2015 5:47:40 AM org.springframework.web.servlet.DispatcherServlet initServletBean
+INFORMACIÓN: FrameworkServlet 'dispatcher': initialization completed in 871 ms
+oct 30, 2015 6:06:50 AM org.apache.catalina.core.StandardServer await
+INFORMACIÓN: Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+oct 30, 2015 6:06:50 AM org.apache.coyote.AbstractProtocol pause
+INFORMACIÓN: Pausing ProtocolHandler ["http-bio-8080"]
+oct 30, 2015 6:06:50 AM org.apache.coyote.AbstractProtocol pause
+INFORMACIÓN: Pausing ProtocolHandler ["ajp-bio-8009"]
+oct 30, 2015 6:06:51 AM org.apache.catalina.core.StandardService stopInternal
+INFORMACIÓN: Parando servicio Catalina
+oct 30, 2015 6:06:51 AM org.springframework.web.context.support.XmlWebApplicationContext doClose
+INFORMACIÓN: Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Oct 30 05:47:39 COT 2015]; parent: Root WebApplicationContext
+oct 30, 2015 6:06:51 AM org.springframework.web.context.support.XmlWebApplicationContext doClose
+INFORMACIÓN: Closing Root WebApplicationContext: startup date [Fri Oct 30 05:47:21 COT 2015]; root of context hierarchy
+oct 30, 2015 6:06:51 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+GRAVE: La aplicación web [/55-springwebapp] registró el conductor JDBC [com.mysql.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+oct 30, 2015 6:06:51 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+GRAVE: La aplicación web [/55-springwebapp] parece haber arrancado un hilo llamado [Abandoned connection cleanup thread] pero no ha podido pararlo. Esto tiene todas las papeletas de convertirse en un fallo de memoria.
+oct 30, 2015 6:06:51 AM org.apache.coyote.AbstractProtocol stop
+INFORMACIÓN: Stopping ProtocolHandler ["http-bio-8080"]
+oct 30, 2015 6:06:51 AM org.apache.coyote.AbstractProtocol stop
+INFORMACIÓN: Stopping ProtocolHandler ["ajp-bio-8009"]
+oct 30, 2015 6:06:51 AM org.apache.coyote.AbstractProtocol destroy
+INFORMACIÓN: Destroying ProtocolHandler ["http-bio-8080"]
+oct 30, 2015 6:06:51 AM org.apache.coyote.AbstractProtocol destroy
+INFORMACIÓN: Destroying ProtocolHandler ["ajp-bio-8009"]
