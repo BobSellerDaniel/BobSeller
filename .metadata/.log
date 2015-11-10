@@ -652,3 +652,159 @@ Java Model Exception: Java Model Status [bobSeller does not exist]
 !MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
 !SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 12:37:28.394
 !MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.springframework.ide.eclipse.beans.core 1 0 2015-11-10 12:38:23.725
+!MESSAGE Error occured processing '/bobSeller/src/core/config/security-context.xml'
+!STACK 0
+java.lang.NoClassDefFoundError: javax/servlet/Filter
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:250)
+	at org.springframework.security.config.SecurityNamespaceHandler.reportMissingWebClasses(SecurityNamespaceHandler.java:143)
+	at org.springframework.security.config.SecurityNamespaceHandler.parse(SecurityNamespaceHandler.java:98)
+	at org.springframework.ide.eclipse.beans.core.internal.model.namespaces.DelegatingNamespaceHandlerResolver$ElementTrackingNamespaceHandler.parse(DelegatingNamespaceHandlerResolver.java:177)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1411)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$ErrorSuppressingBeanDefinitionParserDelegate.parseCustomElement(BeansConfig.java:1428)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1401)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:168)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$ToolingFriendlyBeanDefinitionDocumentReader.doRegisterBeanDefinitions(BeansConfig.java:1357)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:94)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:508)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.registerBeanDefinitions(BeansConfig.java:410)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:392)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.loadBeanDefinitions(BeansConfig.java:394)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:453)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.Filter
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 46 more
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 12:38:24.052
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 12:38:24.054
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 12:39:07.405
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 12:39:07.407
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:03:00.411
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:03:00.411
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 13:04:15.110
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 13:04:15.113
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 13:04:15.119
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:05:21.357
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:05:21.357
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.servlet.ui 4 0 2015-11-10 13:09:53.368
+!MESSAGE bobSeller does not exist
+!STACK 1
+Java Model Exception: Java Model Status [bobSeller does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(JavaElement.java:566)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:247)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:316)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:302)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:257)
+	at org.eclipse.jdt.internal.core.JavaProject.getPackageFragmentRoots(JavaProject.java:1850)
+	at org.eclipse.jst.servlet.ui.internal.navigator.CompressedJavaProject.getNonExternalSourceFolders(CompressedJavaProject.java:81)
+	at org.eclipse.jst.servlet.ui.internal.navigator.CompressedJavaProject.getJavaElement(CompressedJavaProject.java:106)
+	at org.eclipse.jst.servlet.ui.internal.navigator.CompressedNodeAdapterFactory.getAdapter(CompressedNodeAdapterFactory.java:30)
+	at org.eclipse.core.internal.runtime.AdapterManager.getAdapter(AdapterManager.java:333)
+	at org.eclipse.core.internal.runtime.AdapterManager.loadAdapter(AdapterManager.java:366)
+	at org.eclipse.ui.internal.LegacyResourceSupport.getAdapter(LegacyResourceSupport.java:622)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:264)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:83)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:367)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:349)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:372)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:332)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2015-11-10 13:09:53.368
+!MESSAGE bobSeller does not exist
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:15:55.249
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:15:55.249
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:19.495
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:19.495
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:25.070
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:25.070
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:31.937
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:31.937
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:46.476
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:16:46.476
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:17:35.695
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:17:35.695
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:18:41.939
+!MESSAGE Could not publish server configuration for Tomcat v7.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2015-11-10 13:18:41.939
+!MESSAGE Multiple Contexts have a path of "/bobSeller".
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 13:22:01.816
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-11-10 13:22:01.819
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
