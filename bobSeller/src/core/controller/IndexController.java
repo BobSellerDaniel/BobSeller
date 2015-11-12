@@ -42,7 +42,7 @@ public class IndexController extends HookController{
 	@RequestMapping(value="/admin/{modulo}.html", method = {RequestMethod.GET,RequestMethod.POST})
 	public String admin(Model model, @PathVariable("modulo") String modulo, HttpServletRequest request) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException  {
 		//System.out.println("Variables post capturadas: "+request.getParameter("VARLO"));
-		
+		System.out.println("helloss");
 		super.FuncionesHook(model,"/admin",modulo,request);
 		return mUrl+"admin";
 	}
