@@ -5,7 +5,7 @@
 			<div class="flechaAbajo">&nbsp;</div>
 			<ul>
 				<li th:each="subMenus:${MENUDATOS}" th:if="${subMenus.idPadre} == ${menus.idMenu}" class='has-sub'>
-					<a th:with="baseUrl=@{~/}+${baseUrlAdmin}" th:href="${baseUrl}+${subMenus.nombre}+@{.html}" th:text="${subMenus.titulo}">
+					<a th:with="baseUrl=@{~/}+${baseUrlAdmin}" th:href="${baseUrl}+${subMenus.idMenu}+'-'+${subMenus.nombre}+@{.html}" th:text="${subMenus.titulo}">
 						Menu Hijo
 					</a>
 				</li>
