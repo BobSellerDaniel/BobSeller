@@ -95,6 +95,4 @@ public class Modulos {
 				+ titulo + ", acl=" + acl + ", estado=" + estado + "]";
 	}
 	
-	
-	
 }

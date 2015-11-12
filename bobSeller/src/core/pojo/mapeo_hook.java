@@ -20,7 +20,7 @@ public class mapeo_hook implements Serializable{
 	private int idMenu;
 	private int idPadre;
 	private int posicion;
-	private String url;
+	private String vista;
 	private String urlDescripcion;
 	private String hookNombre;
 	private String hookDescripcion;
@@ -67,11 +67,11 @@ public class mapeo_hook implements Serializable{
 	public void setPosicion(int posicion) {
 		this.posicion = posicion;
 	}
-	public String getUrl() {
-		return url;
+	public String getVista() {
+		return vista;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrl(String vista) {
+		this.vista = vista;
 	}
 	public String getUrlDescripcion() {
 		return urlDescripcion;
@@ -176,7 +176,7 @@ public class mapeo_hook implements Serializable{
 	@Override
 	public String toString() {
 		return "mapeo_hook [idHook=" + idHook + ", idModulos=" + idModulos + ", idMenu=" + idMenu + ", idPadre="
-				+ idPadre + ", posicion=" + posicion + ", url=" + url + ", urlDescripcion=" + urlDescripcion
+				+ idPadre + ", posicion=" + posicion + ", vista=" + vista + ", urlDescripcion=" + urlDescripcion
 				+ ", hookNombre=" + hookNombre + ", hookDescripcion=" + hookDescripcion + ", display=" + display
 				+ ", moduloNombre=" + moduloNombre + ", moduloDescripcion=" + moduloDescripcion + ", moduloVersion="
 				+ moduloVersion + ", moduloClase=" + moduloClase + ", moduloPaquete=" + moduloPaquete

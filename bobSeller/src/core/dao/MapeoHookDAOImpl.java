@@ -32,7 +32,7 @@ public class MapeoHookDAOImpl implements MapeoHookDAO {
 	public List<mapeo_hook> findVista(String vista) {
 		//Query query = getSession().createQuery("from mapeo_hook m where m.url = "+vista);
 		Criteria crit = getSession().createCriteria(mapeo_hook.class);
-		crit.add(Restrictions.eq("url", vista));
+		crit.add(Restrictions.eq("vista", vista));
 		return (List<mapeo_hook>) crit.list();
 	}
 	
