@@ -8,5 +8,6 @@ public enum BOBFormat {
 	moneyCOP,
 	moneyUSD,
 	moneyEUR,
-	phone
+	phone,
+	string
 }
