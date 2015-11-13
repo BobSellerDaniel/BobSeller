@@ -34,17 +34,10 @@ public class ModulosService implements ModulosController{
 		theader.add(BOBHtmlElement.getTh("nombre", true,"",""));
 		theader.add(BOBHtmlElement.getTh("descripcion", true,"",""));
 		theader.add(BOBHtmlElement.getTh("version", true,"",""));
-
-//		theader.add(new BOBHtmlElement(BOBHtmlTag.th,"Id", true, BOBFormat.number));
-//		theader.add(new BOBHtmlElement(BOBHtmlTag.th,"IdMenu", false, BOBFormat.number));
-//		theader.add(new BOBHtmlElement(BOBHtmlTag.th,"nombre", false, BOBFormat.string));
-//		theader.add(new BOBHtmlElement(BOBHtmlTag.th,"descripcion", false, BOBFormat.string));
-//		theader.add(new BOBHtmlElement(BOBHtmlTag.th,"version", false, BOBFormat.number));
-//		theader.add(new BOBHtmlElement(BOBHtmlTag.th,"clase", false, BOBFormat.string));
 		
 		BOBHtml crud = new 	BOBHtml();
 		crud.setIsForm(true);
-		crud.setTitle("Administraciòn de mòdulos");
+		crud.setTitle("Administración de módulos");
 		crud.setTheader(theader);
 		List<BOBCRUD> crudlist = new ArrayList<>();
 		crudlist.add(BOBCRUD.create);
