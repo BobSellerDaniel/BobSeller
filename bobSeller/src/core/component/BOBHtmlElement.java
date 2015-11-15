@@ -16,13 +16,15 @@ public class BOBHtmlElement {
 		private String id;
 		private String name;
 		private String value;
-		private String cssClass;	
+		private String cssClass;
+		private String width;
 		private String required;
 		private String label;
 		private String rows;
 		private String col;
 		private String content;
 		private String href;
+		private String recursoUrl;
 		private String onclick;
 		private String onrollover;
 		private boolean isprimaryBD;
@@ -32,9 +34,8 @@ public class BOBHtmlElement {
 		
 		public BOBHtmlElement(){}
 		
-		
-		public BOBHtmlElement(BOBHtmlTag tag, String type, String id, String name, String value, String classs,
-				String required, String label, String rows, String col, String content, String href,
+		public BOBHtmlElement(BOBHtmlTag tag, String type, String id, String name, String value, String cssClass,
+				String width, String required, String label, String rows, String col, String content, String href, String recursoUrl,
 				String onclick, String onrollover, boolean isprimaryBD, BOBFormat format, List<BOBHtmlElement> children,
 				BOBHtmlElement wraper) {
 			super();
@@ -43,13 +44,15 @@ public class BOBHtmlElement {
 			this.id = id;
 			this.name = name;
 			this.value = value;
-			this.cssClass = classs;
+			this.cssClass = cssClass;
+			this.width = width;
 			this.required = required;
 			this.label = label;
 			this.rows = rows;
 			this.col = col;
 			this.content = content;
 			this.href = href;
+			this.recursoUrl = recursoUrl;
 			this.onclick = onclick;
 			this.onrollover = onrollover;
 			this.isprimaryBD = isprimaryBD;
@@ -67,18 +70,22 @@ public class BOBHtmlElement {
 		 * @param drawIf opcional optional true 
 		 * @return un elemento de tipo TH o cabecera de una tabla HTML
 		 */
-		public static BOBHtmlElement getTh(String label, boolean isprimaryBD, String id, String cssClass) {
-			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, "", cssClass,
-					null, label, null, null, null, null, null, null, isprimaryBD, null, null, null);
+		public static BOBHtmlElement getTh(String label, boolean isprimaryBD, String id, String cssClass, String widths) {
+			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, null, cssClass, widths,
+					null, label, null, null, null, null, null, null, null, isprimaryBD, null, null, null);
 			return th;
 		}
 		
-		public boolean drawIf(){
-			return true;	
-		}
+		public static BOBHtmlElement getTab(String label, String id, String cssClass, String recursoUrl){
+			BOBHtmlElement tab = new BOBHtmlElement(BOBHtmlTag.tab, null, id, null, null, cssClass,
+					null,null, label, null, null, null, null, recursoUrl,
+					null, null, false, null, null,null);
+			return tab;
+		} 
 		
-		 
 		
+		
+		public boolean drawIf(){return true;}
 		
 		public BOBHtmlTag getTag() {return tag;}
 		public void setTag(BOBHtmlTag tag) {this.tag = tag;}
@@ -134,18 +141,19 @@ public class BOBHtmlElement {
 		public BOBHtmlElement getWraper() {	return wraper;}
 		public void setWraper(BOBHtmlElement wraper) {this.wraper = wraper;}
 		
+		
+		public String getCssClass() {return cssClass;}
+		public void setCssClass(String cssClass) {this.cssClass = cssClass;}
+
+		public String getWidth() {return width;}
+		public void setWidth(String width) {this.width = width;}
+
 		@Override
 		public String toString() {
 			return "BOBHtmlElement [tag=" + tag + ", type=" + type + ", id=" + id + ", name=" + name + ", value="
-					+ value + ", classs=" + cssClass + ", required=" + required + ", label=" + label + ", rows=" + rows
-					+ ", col=" + col + ", content=" + content + ", drawIf=" + ", href=" + href + ", onclick="
-					+ onclick + ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD + ", format=" + format
-					+ ", children=" + children + ", wraper=" + wraper + "]";
+					+ value + ", cssClass=" + cssClass + ", width=" + width + ", required=" + required + ", label="
+					+ label + ", rows=" + rows + ", col=" + col + ", content=" + content + ", href=" + href
+					+ ", onclick=" + onclick + ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD
+					+ ", format=" + format + ", children=" + children + ", wraper=" + wraper + "]";
 		}
-
-		
-		
-
-		
-				
 }

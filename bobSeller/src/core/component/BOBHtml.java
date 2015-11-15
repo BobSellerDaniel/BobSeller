@@ -1,12 +1,9 @@
 package core.component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,11 +27,14 @@ public class BOBHtml {
 	private boolean isForm;
 	private List fieldList;
 	private List<BOBHtmlElement> theader;
+	private List<BOBHtmlElement> tabs;
 	private HttpServletRequest request;
 	
 	public String OuputHtml(){
 		
-		String htmlOuput ="<div class='WrapperTablaList'><form id='"+idHTML+"' method='post' action='"+request.getRequestURL()+"'>";
+		String htmlOuput ="<div class='WrapperTablaList'>"
+				+ "<div class='TituloTabla'>"+title+"</div>"
+				+ "<form id='"+idHTML+"' method='post' action='"+request.getRequestURL()+"'>";
 		
 		int NunPagin =  0;
 		int PaginaActual =  0;
@@ -45,8 +45,7 @@ public class BOBHtml {
 		}else{
 			NunPagin = (int)(nunRegistro/10) > 1 ?nunRegistro/10:1; 
 			PaginaActual = (int) ((request.getParameter("pagAct") != null)? Integer.parseInt(request.getParameter("pagAct")):NunPagin);
-			PaginaSig = (PaginaActual < NunPagin)?PaginaActual+1:NunPagin;	
-			//System.out.println("NunPagin: "+NunPagin+" -- PaginaActual: "+PaginaActual+" -- PaginaSig: "+PaginaSig);
+			PaginaSig = (PaginaActual < NunPagin)?PaginaActual+1:NunPagin;
 		}
 		
 		htmlOuput += "<div><div style='position: relative;float: left; padding: 10px;'><table><tr>";
@@ -64,28 +63,36 @@ public class BOBHtml {
 		
 		htmlOuput += "<input type='hidden' id='pagAct' name='pagAct' value='"+PaginaSig+"'> "
 				  +  "<input type='hidden' id='ultPag'name='ultPag' value='"+NunPagin+"'>"
-				  +  "</tr></table></div><div style='position: relative; float: right; padding: 10px;'>sdfsdf</div></div>";
+				  +  "</tr></table></div><div style='position: relative; float: right; padding: 10px;'>"
+				  + "<input type='submit' id='submitFilterButtonproduct' name='submitFilter' value='Filtrar' class='button'>					"
+				  + "<input type='submit' name='submitResetproduct' value='Borrar filtro' class='button'>"
+				  + "</div></div>";
 		htmlOuput += "<div id='tabla-"+idHTML+"' class='BobTablaList'><table ><tr>";
 				
-		for(BOBHtmlElement row: theader){
-			String Id = (row.getId() != "") ? row.getId() : "";
-			String cssClass = (row.getCssClasss() != "") ? row.getCssClasss() : "";
-			htmlOuput += "<th id='th-"+Id+"' class='order "+cssClass+"'>"+row.getLabel()+"</th>";
-		}
-		
-		htmlOuput += "</tr><tr>";
-		
-		int contCol = 1;
+		int contCol = 0;
 		for(BOBHtmlElement row: theader){
 			contCol++;
 			String Id = (row.getId() != "") ? row.getId() : "";
-			htmlOuput += "<th class='col-"+contCol+"'><input type='text' id='input-"+Id+"' name='"+Id+"' title='Busca por: "+row.getLabel()+"'></th>";
+			String cssClass = (row.getCssClasss() != "") ? row.getCssClasss() : "";
+			htmlOuput += "<th class='col-"+contCol+" ' style='width:"+row.getWidth()+"' id='th-"+Id+"'>"+row.getLabel()+"</th>";
 		}
 		
+		htmlOuput += "<th style='width:10%' id='AccTable' class='centrar' colspan='2'>Acciones</th>";		
+		htmlOuput += "</tr><tr>";
+		
+		contCol = 0;
+		for(BOBHtmlElement row: theader){
+			contCol++;
+			String Id = (row.getId() != "") ? row.getId() : "";
+			htmlOuput += "<th class='col-"+contCol+"' style='width:"+row.getWidth()+"'>"
+					+ "<input type='text' id='input-"+Id+"' name='"+Id+"' title='Busca por: "+row.getLabel()+"' style='width:98%'></th>";
+		}
+		
+		htmlOuput += "<th style='width:10%' class='centrar'>Actu</th><th style='width:10%' class='centrar'>Elim</th>";	
 		htmlOuput += "</tr></theader><tbody>";
 	
 		for(Object row: fieldList){
-			htmlOuput += "<tr>";
+			htmlOuput += "<tr class='trList'>";
 			JSONObject obj;
 			try {
 				
@@ -103,15 +110,18 @@ public class BOBHtml {
 					if(values.get(rowTh.getId()) instanceof JSONObject){
 						JSONObject tmpObje = (JSONObject) values.get(rowTh.getId());
 						JSONObject tmpObjeId = (JSONObject) tmpObje.getJSONArray(JSONObject.getNames(tmpObje)[0]).get(0);
-						htmlOuput += "<td class='col-"+contCol+"'>"+tmpObjeId.get(JSONObject.getNames(tmpObjeId)[0])+"<div style='display:none;'>";
+						htmlOuput += "<td class='col-"+contCol+" "+rowTh.getCssClass()+"' style='width:"+rowTh.getWidth()+"'>"+tmpObjeId.get(JSONObject.getNames(tmpObjeId)[0])+"<div style='display:none;'>";
 						htmlOuput += "<table>";
 						htmlOuput	+= tmpObje.getJSONArray(JSONObject.getNames(tmpObje)[0]).toString().replace("[", "").replace("]", "").replace(",", "").replace("{\"", "<tr><td>").replace("\":", "</td><td>").replace("}","</td></tr>").replace("\"", "");
 						htmlOuput	+= "</table></div></td>";
 					}
+					
 					else {
-						htmlOuput += "<td class='col-"+contCol+"'>"+values.get(rowTh.getId())+"</td>";
+						htmlOuput += "<td class='col-"+contCol+" "+rowTh.getCssClass()+"' style='width:"+rowTh.getWidth()+"'>"+values.get(rowTh.getId())+"</td>";
 					}
 				}
+				htmlOuput 	+= "<td class='centrar'><input type='image' src='../img/small/compose-4.png'></td>"
+							+ "<td class='centrar'><input type='image' src='../img/small/bin-3.png'></td>";
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -178,13 +188,17 @@ public class BOBHtml {
 	public void setRequest(HttpServletRequest request) {this.request = request;}
 	public HttpServletRequest getRequest() {return this.request;}
 	
+	public List<BOBHtmlElement> getTabs() {return tabs;}
+	public void setTabs(List<BOBHtmlElement> tabs) {this.tabs = tabs;}
+
 	@Override
 	public String toString() {
-		return "BOBHtml [fields=" + fields + ", submit=" + submit + ", title=" + title + ", description=" + description
-				+ ", exportData=" + exportData + ", importData=" + importData + ", saveCloseBt=" + saveCloseBt
-				+ ", saveBt=" + saveBt + ", closeBt=" + closeBt
-				+ ", crud=" + crud + ", isList=" + isList + ", isForm=" + isForm + ", fieldList=" + fieldList
-				+ ", theader=" + theader + "]";
+		return "BOBHtml [fields=" + fields + ", idHTML=" + idHTML + ", submit=" + submit + ", title=" + title
+				+ ", description=" + description + ", exportData=" + exportData + ", showPaginator=" + showPaginator
+				+ ", nunRegistro=" + nunRegistro + ", importData=" + importData + ", saveCloseBt=" + saveCloseBt
+				+ ", saveBt=" + saveBt + ", closeBt=" + closeBt + ", crud=" + crud + ", isList=" + isList + ", isForm="
+				+ isForm + ", fieldList=" + fieldList + ", theader=" + theader + ", tabs=" + tabs + ", request="
+				+ request + "]";
 	}
-	
+
 }

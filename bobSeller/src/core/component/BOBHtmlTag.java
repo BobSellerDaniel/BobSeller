@@ -11,5 +11,6 @@ public enum BOBHtmlTag {
 	td,
 	tr,
 	select,
+	tab,
 	options
 }

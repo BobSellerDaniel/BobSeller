@@ -34,7 +34,7 @@
 
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 
-	<mvc:resources mapping="/img/**" location="/WEB-INF/views/img/" />
+	<mvc:resources mapping="/img/**" location="/WEB-INF/views/img/**" />
 	<mvc:resources mapping="/css/**" location="/WEB-INF/views/css/" />
 	<mvc:resources mapping="/js/**" location="/WEB-INF/views/js/" />
 	

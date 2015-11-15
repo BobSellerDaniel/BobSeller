@@ -17,10 +17,7 @@ body{
     letter-spacing: 1px;
 }
 
-.error:before{
-    content: "Ups!, ";
-}
-
+.error:before{content: "Ups!, ";}
 
 .BobTablaList{
 	position: relative;
@@ -35,7 +32,6 @@ body{
 
 .BobTablaList > table > tbody > tr > th > input{
     margin: 0px;
-    width: 70%;
     padding: 3px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -45,9 +41,63 @@ body{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06) inset;
 }
 
-.WrapperTablaList{
-	padding: 0px 30px;
+.BobTablaList > table > tbody > tr > td{padding: 0px 3px;}
+
+.TituloTabla{
+	background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    padding: 14px 13px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    font-size: 21px;
+    color: #504f4e;
+    position: relative;
 }
+
+.centrar{text-align: center;}
+.izquierda{text-align: left;}
+.derecha{text-align: right;}
+
+.WrapperTablaList{padding: 0px 30px; color: #504f4e;}
+
+.trList:hover{background-color: #FFF6C7;}
+
+.button:hover{background-color: #3a6b94; border-color: #30587b;}
+
+.button:focus{
+	border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.button{
+	color: #fff;
+    background-color: #4985b8;
+    border-color: #4178a7;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 4px 12px;
+    font-size: 15px;
+    line-height: 1.43;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 .nav-menu-separator{
 	display: block;
@@ -105,10 +155,7 @@ ul#menuAdmin li {
  list-style: none;
 }
   
-ul#menuAdmin li:hover{
- color: #aaa073;
- cursor:pointer;
-}
+ul#menuAdmin li:hover{color: #aaa073; cursor:pointer;}
   
 ul#menuAdmin ul {
 	display: none;
@@ -121,24 +168,19 @@ ul#menuAdmin ul {
  }
   
 ul#menuAdmin ul li{
- float: left;
- color: #fff;
- width:100%;
+	float: left;
+	color: #fff;
+	width:100%;
 }
  
  
-ul#menuAdmin ul li a{
- color: #fff;
-}
+ul#menuAdmin ul li a{color: #fff;}
   
-ul#menuAdmin ul li a:hover{
- color: #aaa073;
- cursor:pointer;
-}
+ul#menuAdmin ul li a:hover{color: #aaa073; cursor:pointer;}
   
 ul#menuAdmin li:hover ul ul,ul#menuAdmin li:hover ul ul ul,ul#menuAdmin li.iehover ul ul,ul#menuAdmin li.iehover ul ul ul {
- display: none;
- cursor:pointer;
+	display: none;
+ 	cursor:pointer;
 }
   
 ul#menuAdmin li:hover ul,ul#menuAdmin ul li:hover ul,ul#menuAdmin ul ul li:hover ul,ul#menuAdmin li.iehover ul,ul#menuAdmin ul li.iehover ul,ul#menuAdmin ul ul li.iehover ul {

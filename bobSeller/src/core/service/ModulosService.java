@@ -18,6 +18,10 @@ import core.dao.IndexAdminTablasDAO;
 @Service
 public class ModulosService implements ModulosController{
 	
+	private HttpServletRequest request;
+	private Model model;
+	private BOBHtml crud = new 	BOBHtml();
+	
 	@Autowired
 	private ModulosDAO modulosDaos;
 	
@@ -27,19 +31,33 @@ public class ModulosService implements ModulosController{
 	@Override
 	public String getHook(String hook, Model model, HttpServletRequest request) {		
 		
-		List<BOBHtmlElement> theader = new ArrayList<>();
-		theader.add(BOBHtmlElement.getTh("Id", true,"idModulos",""));
-		theader.add(BOBHtmlElement.getTh("Menu", false,"idMenu",""));
-		theader.add(BOBHtmlElement.getTh("Nombre", false,"nombre",""));
-		theader.add(BOBHtmlElement.getTh("Descripción", false,"descripcion",""));
-		theader.add(BOBHtmlElement.getTh("Versión", false,"version",""));
-		theader.add(BOBHtmlElement.getTh("Clase", false,"clase",""));
-		theader.add(BOBHtmlElement.getTh("Paquete", false,"paquete",""));
-		theader.add(BOBHtmlElement.getTh("Titulo", false,"titulo",""));
-		theader.add(BOBHtmlElement.getTh("ACL", false,"acl",""));
-		theader.add(BOBHtmlElement.getTh("Estado", false,"estado",""));
+		this.request = request;
+		this.model = model;
 		
-		BOBHtml crud = new 	BOBHtml();
+		List<BOBHtmlElement> tabs = new ArrayList<>();
+		tabs.add(BOBHtmlElement.getTab("MODULOS", "modulosTab", "tabs", ""));
+		tabs.add(BOBHtmlElement.getTab("HOOKS", "hooksTab", "tabs", ""));
+		tabs.add(BOBHtmlElement.getTab("VISTAS", "vistasTab", "tabs", ""));
+		crud.setTabs(tabs);
+		AdminModulos();
+		
+		return "modulos";
+	}
+	
+	public void AdminModulos(){
+		
+		List<BOBHtmlElement> theader = new ArrayList<>();
+		theader.add(BOBHtmlElement.getTh("Id", true,"idModulos","centrar","5%"));
+		theader.add(BOBHtmlElement.getTh("Menu", false,"idMenu","centrar","5%"));
+		theader.add(BOBHtmlElement.getTh("Nombre", false,"nombre","izquierda","10%"));
+		theader.add(BOBHtmlElement.getTh("Descripción", false,"descripcion","izquierda","25%"));
+		theader.add(BOBHtmlElement.getTh("Versión", false,"version","centrar","6%"));
+		theader.add(BOBHtmlElement.getTh("Clase", false,"clase","izquierda","12%"));
+		theader.add(BOBHtmlElement.getTh("Paquete", false,"paquete","centrar","5%"));
+		theader.add(BOBHtmlElement.getTh("Titulo", false,"titulo","izquierda","11%"));
+		theader.add(BOBHtmlElement.getTh("ACL", false,"acl","centrar","15%"));
+		theader.add(BOBHtmlElement.getTh("Estado", false,"estado","centrar","5%"));
+		
 		crud.setIsForm(true);
 		crud.setRequest(request);
 		crud.setTitle("Administración de módulos");
@@ -61,7 +79,6 @@ public class ModulosService implements ModulosController{
 		
 		model.addAttribute("tab",request.getParameter("tabs"));
 		model.addAttribute("BOB_LIST",OuputHtml);
-		return "modulos";
 	}
 	
 	@Override
