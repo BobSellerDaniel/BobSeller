@@ -90,9 +90,9 @@ public class Modulos {
 	}
 	@Override
 	public String toString() {
-		return "Modulos [idModulos=" + idModulos + ", idMenu=" + idMenu + ", nombre=" + nombre + ", descripcion="
-				+ descripcion + ", version=" + version + ", clase=" + clase + ", paquete=" + paquete + ", titulo="
-				+ titulo + ", acl=" + acl + ", estado=" + estado + "]";
+		return "{Modulos :[{idModulos:" + idModulos + "}, {idMenu:" + idMenu + "}, {nombre:" + nombre + "}, {descripcion="
+				+ descripcion + "}, {version:" + version + "}, {clase:" + clase + "}, {paquete:" + paquete + "}, {titulo:"
+				+ titulo + "}, {acl:" + acl + "}, {estado:" + estado + "}]}";
 	}
 	
 }

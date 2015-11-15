@@ -16,7 +16,7 @@ public class BOBHtmlElement {
 		private String id;
 		private String name;
 		private String value;
-		private String classs;	
+		private String cssClass;	
 		private String required;
 		private String label;
 		private String rows;
@@ -43,7 +43,7 @@ public class BOBHtmlElement {
 			this.id = id;
 			this.name = name;
 			this.value = value;
-			this.classs = classs;
+			this.cssClass = classs;
 			this.required = required;
 			this.label = label;
 			this.rows = rows;
@@ -68,7 +68,7 @@ public class BOBHtmlElement {
 		 * @return un elemento de tipo TH o cabecera de una tabla HTML
 		 */
 		public static BOBHtmlElement getTh(String label, boolean isprimaryBD, String id, String cssClass) {
-			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, "", "th "+cssClass,
+			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, "", cssClass,
 					null, label, null, null, null, null, null, null, isprimaryBD, null, null, null);
 			return th;
 		}
@@ -95,8 +95,8 @@ public class BOBHtmlElement {
 		public String getValue() {return value;}
 		public void setValue(String value) {this.value = value;}
 		
-		public String getClasss() {return classs;}
-		public void setClasss(String classs) {this.classs = classs;}
+		public String getCssClasss() {return cssClass;}
+		public void setCssClasss(String classs) {this.cssClass = classs;}
 		
 		public String getRequired() {return required;}
 		public void setRequired(String required) {this.required = required;}
@@ -137,7 +137,7 @@ public class BOBHtmlElement {
 		@Override
 		public String toString() {
 			return "BOBHtmlElement [tag=" + tag + ", type=" + type + ", id=" + id + ", name=" + name + ", value="
-					+ value + ", classs=" + classs + ", required=" + required + ", label=" + label + ", rows=" + rows
+					+ value + ", classs=" + cssClass + ", required=" + required + ", label=" + label + ", rows=" + rows
 					+ ", col=" + col + ", content=" + content + ", drawIf=" + ", href=" + href + ", onclick="
 					+ onclick + ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD + ", format=" + format
 					+ ", children=" + children + ", wraper=" + wraper + "]";

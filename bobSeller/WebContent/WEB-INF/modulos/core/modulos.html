@@ -16,11 +16,12 @@
 		<div id="hooks" th:if="${tab} == @{hooks}" >hook</div>
 		<div id="vistas" th:if="${tab} == @{vistas}" >vista</div>
 	</div>
-	
-	[[${BOB_LIST}]]
-	<div th:text= "${BOB_LIST}">
-		Contenidooo
-	</div>
+
+
   <input type="submit" name="Oprimir" value="Oprimir">
 </form>
+
+<div th:utext= "${BOB_LIST}">
+	Contenidooo
+</div>
 </div>

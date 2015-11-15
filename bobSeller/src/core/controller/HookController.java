@@ -83,7 +83,7 @@ public class HookController{
 			model.addAttribute(hook.getDisplay(),temp);
 			
 		} catch (Exception e) {
-			model.addAttribute("HOOKERROR","Error en la carga del modulo: '"+hook.getModuloNombre()+"' posiblemente la clase '"+hook.getModuloClase()+ "', No esta siendo localizada por BobSeller.");
+			model.addAttribute("HOOKERROR","Error en la carga del modulo: '"+hook.getModuloNombre()+"' posiblemente la clase '"+hook.getModuloClase()+ "', de BobSeller. Error --> "+e);
 		}
 		
 	}

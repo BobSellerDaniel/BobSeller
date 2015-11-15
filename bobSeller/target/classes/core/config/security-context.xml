@@ -8,6 +8,7 @@
 	<security:http use-expressions="true"> 
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/index" access="permitAll" />
+		<security:intercept-url pattern="/img/**" access="permitAll" />
 		<security:intercept-url pattern="/css/**" access="permitAll" />
 		<security:intercept-url pattern="/js/**" access="permitAll" />
 		<security:intercept-url pattern="/about" access="isAuthenticated()" />

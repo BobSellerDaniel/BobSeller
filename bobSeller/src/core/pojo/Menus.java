@@ -75,9 +75,9 @@ public class Menus implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Menus [idMenu=" + idMenu + ", idPadre=" + idPadre + ", nombre=" + nombre + ", descripcion="
-				+ descripcion + ", icono=" + icono + ", titulo=" + titulo + ", orden=" + orden + ", estado=" + estado
-				+ "]";
+		return "{Menus :[{idMenu:" + idMenu + "}, {idPadre:" + idPadre + "}, {nombre:" + nombre + "}, {descripcion:"
+				+ descripcion + "}, {icono:" + icono + "}, {titulo:" + titulo + "}, {orden:" + orden + "}, {estado:" + estado
+				+ "}]}";
 	}
 	
 }
