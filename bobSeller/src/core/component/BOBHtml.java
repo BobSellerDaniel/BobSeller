@@ -41,7 +41,9 @@ public class BOBHtml {
 							+ "<img width='100%' src='"+tab.getRecursoUrl()+"' >"
 					+ "</div></a>"
 					+ "</div>";
-			//if(tab.get)
+			if(tab.getSeleted()){
+				
+			}
 		}
 		
 		htmlOuput += "</div>";
