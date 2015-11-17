@@ -17,6 +17,7 @@ public class BOBHtmlElement {
 		private String name;
 		private String value;
 		private String cssClass;
+		private String backgroundColor;
 		private String width;
 		private String required;
 		private String label;
@@ -28,15 +29,16 @@ public class BOBHtmlElement {
 		private String onclick;
 		private String onrollover;
 		private boolean isprimaryBD;
+		private boolean seleted;
 		private BOBFormat format;
 		private List<BOBHtmlElement> children;
 		private BOBHtmlElement wraper;
 		
 		public BOBHtmlElement(){}
 		
-		public BOBHtmlElement(BOBHtmlTag tag, String type, String id, String name, String value, String cssClass,
+		public BOBHtmlElement(BOBHtmlTag tag, String type, String id, String name, String value, String cssClass, String backgroundColor,
 				String width, String required, String label, String rows, String col, String content, String href, String recursoUrl,
-				String onclick, String onrollover, boolean isprimaryBD, BOBFormat format, List<BOBHtmlElement> children,
+				String onclick, String onrollover, boolean isprimaryBD, boolean seleted, BOBFormat format, List<BOBHtmlElement> children,
 				BOBHtmlElement wraper) {
 			super();
 			this.tag = tag;
@@ -45,6 +47,7 @@ public class BOBHtmlElement {
 			this.name = name;
 			this.value = value;
 			this.cssClass = cssClass;
+			this.backgroundColor = backgroundColor;
 			this.width = width;
 			this.required = required;
 			this.label = label;
@@ -56,6 +59,7 @@ public class BOBHtmlElement {
 			this.onclick = onclick;
 			this.onrollover = onrollover;
 			this.isprimaryBD = isprimaryBD;
+			this.seleted = seleted;
 			this.format = format;
 			this.children = children;
 			this.wraper = wraper;
@@ -71,19 +75,17 @@ public class BOBHtmlElement {
 		 * @return un elemento de tipo TH o cabecera de una tabla HTML
 		 */
 		public static BOBHtmlElement getTh(String label, boolean isprimaryBD, String id, String cssClass, String widths) {
-			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, null, cssClass, widths,
-					null, label, null, null, null, null, null, null, null, isprimaryBD, null, null, null);
+			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, null, cssClass, null, widths,
+					null, label, null, null, null, null, null, null, null, isprimaryBD, false, null, null, null);
 			return th;
 		}
-		
-		public static BOBHtmlElement getTab(String label, String id, String cssClass, String recursoUrl){
-			BOBHtmlElement tab = new BOBHtmlElement(BOBHtmlTag.tab, null, id, null, null, cssClass,
+		 
+		public static BOBHtmlElement getTab(String label, String id, String cssClass, String recursoUrl, String background, boolean seleted){
+			BOBHtmlElement tab = new BOBHtmlElement(BOBHtmlTag.tab, null, id, null, null, cssClass, background,
 					null,null, label, null, null, null, null, recursoUrl,
-					null, null, false, null, null,null);
+					null, null, false, seleted,null, null,null);
 			return tab;
 		} 
-		
-		
 		
 		public boolean drawIf(){return true;}
 		
@@ -101,9 +103,6 @@ public class BOBHtmlElement {
 		
 		public String getValue() {return value;}
 		public void setValue(String value) {this.value = value;}
-		
-		public String getCssClasss() {return cssClass;}
-		public void setCssClasss(String classs) {this.cssClass = classs;}
 		
 		public String getRequired() {return required;}
 		public void setRequired(String required) {this.required = required;}
@@ -141,19 +140,29 @@ public class BOBHtmlElement {
 		public BOBHtmlElement getWraper() {	return wraper;}
 		public void setWraper(BOBHtmlElement wraper) {this.wraper = wraper;}
 		
-		
 		public String getCssClass() {return cssClass;}
 		public void setCssClass(String cssClass) {this.cssClass = cssClass;}
 
 		public String getWidth() {return width;}
 		public void setWidth(String width) {this.width = width;}
 
+		public String getBackgroundColor() {return backgroundColor;}
+		public void setBackgroundColor(String backgroundColor) {this.backgroundColor = backgroundColor;}
+
+		public String getRecursoUrl() {return recursoUrl;}
+		public void setRecursoUrl(String recursoUrl) {this.recursoUrl = recursoUrl;}
+
+		public boolean getSeleted() {return seleted;}
+		public void setSeleted(boolean seleted) {this.seleted = seleted;}
+
 		@Override
 		public String toString() {
 			return "BOBHtmlElement [tag=" + tag + ", type=" + type + ", id=" + id + ", name=" + name + ", value="
-					+ value + ", cssClass=" + cssClass + ", width=" + width + ", required=" + required + ", label="
-					+ label + ", rows=" + rows + ", col=" + col + ", content=" + content + ", href=" + href
-					+ ", onclick=" + onclick + ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD
+					+ value + ", cssClass=" + cssClass + ", backgroundColor=" + backgroundColor + ", width=" + width
+					+ ", required=" + required + ", label=" + label + ", rows=" + rows + ", col=" + col + ", content="
+					+ content + ", href=" + href + ", recursoUrl=" + recursoUrl + ", onclick=" + onclick
+					+ ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD + ", seleted=" + seleted
 					+ ", format=" + format + ", children=" + children + ", wraper=" + wraper + "]";
 		}
+		
 }

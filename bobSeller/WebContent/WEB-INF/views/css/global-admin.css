@@ -19,6 +19,13 @@ body{
 
 .error:before{content: "Ups!, ";}
 
+.admin{
+	margin-top: 20px;
+    clear: both;
+    position: relative;
+    float: left;
+}
+
 .BobTablaList{
 	position: relative;
     width: 100%;
@@ -43,11 +50,62 @@ body{
 
 .BobTablaList > table > tbody > tr > td{padding: 0px 3px;}
 
+.tabs{
+	position: relative;
+    float: right;
+    width: 15%;
+    margin-top: 4px;
+}
+
+.tabMenus{
+	width: 20%;
+    position: relative;
+    float: left;
+    padding: 5px;
+    border: 1px solid #CCCCC6;
+    font-size: 11px;
+    border-style: dashed;
+    text-align: center;
+    margin: 0px 6px;
+}
+
+.tabTitulo:hover{
+	background-color:#D5D5D4 !important; 
+}
+
+.tabTitulo:ACTIVE{
+	background-color:#FF7600 !important; 
+}
+
+.tabTitulo[title]:hover:after {
+    content: attr(title);
+    padding: 4px 8px;
+    color: #FFF;
+    position: absolute;
+    left: 0;
+    bottom: 109%;
+    white-space: nowrap;
+    z-index: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 4px #222;
+    -webkit-box-shadow: 0px 0px 4px #222;
+    box-shadow: 0px 0px 4px #222;
+    background-image: -moz-linear-gradient(top, #1C1C1C, #414040);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #1C1C1C),color-stop(1, #414040));
+    background-image: -webkit-linear-gradient(top, #1C1C1C, #414040);
+    background-image: -moz-linear-gradient(top, #1C1C1C, #414040);
+    background-image: -ms-linear-gradient(top, #1C1C1C, #414040);
+    background-image: -o-linear-gradient(top, #1C1C1C, #414040);
+}
+
 .TituloTabla{
 	background-color: #F8F8F8;
     border: 1px solid #CCCCCC;
     margin-bottom: 10px;
-    padding: 14px 13px;
+    text-align: left;
+    padding: 17px 10px;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -55,6 +113,7 @@ body{
     font-size: 21px;
     color: #504f4e;
     position: relative;
+    z-index: -1;
 }
 
 .centrar{text-align: center;}
@@ -63,7 +122,7 @@ body{
 
 .WrapperTablaList{padding: 0px 30px; color: #504f4e;}
 
-.trList:hover{background-color: #FFF6C7;}
+.trList:hover{background-color: #FFF6C7 !important;}
 
 .button:hover{background-color: #3a6b94; border-color: #30587b;}
 

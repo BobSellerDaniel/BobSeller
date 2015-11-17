@@ -32,9 +32,22 @@ public class BOBHtml {
 	
 	public String OuputHtml(){
 		
-		String htmlOuput ="<div class='WrapperTablaList'>"
-				+ "<div class='TituloTabla'>"+title+"</div>"
-				+ "<form id='"+idHTML+"' method='post' action='"+request.getRequestURL()+"'>";
+		String htmlOuput ="<div class='WrapperTablaList'>";
+		
+		htmlOuput += "<div class='TituloTop'><div class='tabs'>";
+		for(BOBHtmlElement tab: tabs){
+			htmlOuput += "<div class='tabMenus'>" 
+					+ "<a href='"+request.getRequestURL()+"?Vtab="+tab.getLabel()+"'><div class='tabTitulo' style='background-color:"+tab.getBackgroundColor()+";padding: 4px;' title='"+tab.getLabel()+"' >"
+							+ "<img width='100%' src='"+tab.getRecursoUrl()+"' >"
+					+ "</div></a>"
+					+ "</div>";
+			//if(tab.get)
+		}
+		
+		htmlOuput += "</div>";
+		htmlOuput += "<div class='TituloTabla' style=''>"+title+"</div></div>";
+		
+		htmlOuput += "<form id='"+idHTML+"' method='post' action='"+request.getRequestURL()+"'>";
 		
 		int NunPagin =  0;
 		int PaginaActual =  0;
@@ -73,7 +86,7 @@ public class BOBHtml {
 		for(BOBHtmlElement row: theader){
 			contCol++;
 			String Id = (row.getId() != "") ? row.getId() : "";
-			String cssClass = (row.getCssClasss() != "") ? row.getCssClasss() : "";
+			String cssClass = (row.getCssClass() != "") ? row.getCssClass() : "";
 			htmlOuput += "<th class='col-"+contCol+" ' style='width:"+row.getWidth()+"' id='th-"+Id+"'>"+row.getLabel()+"</th>";
 		}
 		
@@ -90,9 +103,19 @@ public class BOBHtml {
 		
 		htmlOuput += "<th style='width:10%' class='centrar'>Actu</th><th style='width:10%' class='centrar'>Elim</th>";	
 		htmlOuput += "</tr></theader><tbody>";
-	
+		
+		int contEstilo = 1;
+		
 		for(Object row: fieldList){
-			htmlOuput += "<tr class='trList'>";
+			
+			if(contEstilo == 1){
+				contEstilo = 0;
+				htmlOuput += "<tr class='trList' style='background-color: gainsboro;'>"; 
+			}else{
+				contEstilo = 1;
+				htmlOuput += "<tr class='trList'>";
+			}
+			
 			JSONObject obj;
 			try {
 				

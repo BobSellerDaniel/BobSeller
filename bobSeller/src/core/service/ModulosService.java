@@ -34,14 +34,23 @@ public class ModulosService implements ModulosController{
 		this.request = request;
 		this.model = model;
 		
-		List<BOBHtmlElement> tabs = new ArrayList<>();
-		tabs.add(BOBHtmlElement.getTab("MODULOS", "modulosTab", "tabs", ""));
-		tabs.add(BOBHtmlElement.getTab("HOOKS", "hooksTab", "tabs", ""));
-		tabs.add(BOBHtmlElement.getTab("VISTAS", "vistasTab", "tabs", ""));
-		crud.setTabs(tabs);
-		AdminModulos();
+		String Vtab = (String)request.getParameter("Vtab");
+		
+		if(0 == Vtab.compareTo("MODULOS")){menus("Administración de módulos",true,false,false); AdminModulos();}
+		else if(0 == Vtab.compareTo("HOOKS")){menus("Administración de Hooks",false,true,false); AdminHooks();}
+		else if(0 == Vtab.compareTo("VISTAS")){menus("Administración de Vistas",false,false,true); AdminVistas();}
+		else AdminModulos();
 		
 		return "modulos";
+	}
+	
+	public void menus(String titulo, boolean modulos, boolean hooks, boolean vistas){
+		crud.setTitle(titulo);
+		List<BOBHtmlElement> tabs = new ArrayList<>();
+		tabs.add(BOBHtmlElement.getTab("MODULOS", "modulosTab", "tabs", "../img/big/modulos.png", "gold", modulos));
+		tabs.add(BOBHtmlElement.getTab("HOOKS", "hooksTab", "tabs", "../img/big/hook.png","#B1D6FC", hooks));
+		tabs.add(BOBHtmlElement.getTab("VISTAS", "vistasTab", "tabs", "../img/big/vista.png","#D8B1FC", vistas));
+		crud.setTabs(tabs);
 	}
 	
 	public void AdminModulos(){
@@ -60,7 +69,6 @@ public class ModulosService implements ModulosController{
 		
 		crud.setIsForm(true);
 		crud.setRequest(request);
-		crud.setTitle("Administración de módulos");
 		crud.setTheader(theader);
 		List<BOBCRUD> crudlist = new ArrayList<>();
 		crudlist.add(BOBCRUD.create);
@@ -74,11 +82,18 @@ public class ModulosService implements ModulosController{
 		crud.setFieldList(modulosDaos.findAll());
 		crud.setIdHTML("tablaAdmin");
 		crud.setImportData(true);
-		
-		String OuputHtml = crud.OuputHtml();
-		
-		model.addAttribute("tab",request.getParameter("tabs"));
-		model.addAttribute("BOB_LIST",OuputHtml);
+				
+		model.addAttribute("BOB_LIST",crud.OuputHtml());
+	}
+	
+	public void AdminHooks(){
+		AdminModulos();
+		//model.addAttribute("BOB_LIST",crud.OuputHtml());
+	}
+	
+	public void AdminVistas(){
+		AdminModulos();
+		//model.addAttribute("BOB_LIST",crud.OuputHtml());
 	}
 	
 	@Override
