@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import core.dao.ModulosDAO;
+
 public class BOBHtml {
 	
 	private List<BOBHtmlElement> fields;
@@ -25,7 +27,7 @@ public class BOBHtml {
 	private boolean saveBt;
 	private boolean closeBt;
 	private Set<BOBCRUD> crud;
-
+	private Class className;
 	private List fieldList;
 	private List<BOBHtmlElement> theader;
 	private List<BOBHtmlElement> tabs;
@@ -325,14 +327,27 @@ public class BOBHtml {
 	
 	public List<BOBHtmlElement> getTabs() {return tabs;}
 	public void setTabs(List<BOBHtmlElement> tabs) {this.tabs = tabs;}
+	
+	
+
 
 	@Override
 	public String toString() {
 		return "BOBHtml [fields=" + fields + ", idHTML=" + idHTML + ", submit=" + submit + ", title=" + title
 				+ ", description=" + description + ", exportData=" + exportData + ", showPaginator=" + showPaginator
 				+ ", nunRegistro=" + nunRegistro + ", importData=" + importData + ", saveCloseBt=" + saveCloseBt
-				+ ", saveBt=" + saveBt + ", closeBt=" + closeBt + ", crud=" + crud + ", fieldList=" + fieldList + ", theader=" + theader + ", tabs=" + tabs + ", request="
-				+ request + "]";
+				+ ", saveBt=" + saveBt + ", closeBt=" + closeBt + ", crud=" + crud + ", fieldList="
+				+ fieldList + ", theader=" + theader + ", tabs=" + tabs + ", request=" + request + "]";
 	}
+
+	public Class getClassName() {
+		return className;
+	}
+
+	public void setClassName(Class className) {
+		this.className = className;
+	}
+
+	
 
 }

@@ -16,6 +16,8 @@ import core.component.BOBFormat;
 import core.component.BOBHtml;
 import core.controller.ModulosController;
 import core.dao.ModulosDAO;
+import core.pojo.Menus;
+import core.pojo.Modulos;
 import core.dao.IndexAdminTablasDAO;
 
 @Service
@@ -64,6 +66,9 @@ public class ModulosService implements ModulosController {
 				ListarModulos();
 			}
 		}
+		
+		
+//		t//crud.setDao(Modulos.class);
 
 		return "modulos";
 	}
@@ -102,7 +107,25 @@ public class ModulosService implements ModulosController {
 		crud.setNunRegistro(IndexAdminTablasDAO.findByNombre("modulos").getFilas());
 		crud.setDescription("cualquier cosa");
 		crud.setExportData(true);
-		crud.setFieldList(modulosDaos.findAll());
+		
+		boolean vfilterID = false;
+		if (request.getParameter("vfilterID")!=null && 
+				"true".compareTo(request.getParameter("vfilterID"))==0 ){
+			vfilterID = true;
+		}
+		if(vfilterID){
+			Modulos filter = new Modulos();
+//			Menus m = new Menus();
+//			m.set;
+			//filter.setClase("Login");
+			filter.setEstado("1");
+			
+//			List fieldList = modulosDaos.findByCriteria(filter);
+//			crud.setFieldList(fieldList);
+		}else{
+			crud.setFieldList(modulosDaos.findAll());			
+		}
+
 		crud.setIdHTML("tablaAdmin");
 		crud.setImportData(true);
 		
@@ -141,5 +164,7 @@ public class ModulosService implements ModulosController {
 	public Boolean desinsatalar(List hooks) {
 		return null;
 	}
+
+
 
 }

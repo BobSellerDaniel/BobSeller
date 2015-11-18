@@ -6,11 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import core.pojo.Modulos;
+
 
 public interface ModulosController {
 	
 	public Boolean instalar(List hooks);
 	public Boolean desinsatalar(List hooks);
 	public String getHook(String hook, Model model, HttpServletRequest request);
-		
+
 }
