@@ -39,7 +39,7 @@ public class BOBHtml {
 		
 		String BackgroundColorTab = "#F8F8F8"; 
 		String requestVtab = "";
-		String nameTabs = "";
+		String nameTabs = "true";
 		String vTabId = "";
 		if(tabs != null){
 			for(BOBHtmlElement tab: tabs){

@@ -6,7 +6,6 @@ body{
     font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 15px;
     line-height: 1.43;
-    overflow: hidden;
 }
 
 .error{
@@ -151,10 +150,7 @@ body{
     width: 31%;
     margin-top: 4px;
 }
-.tableImg{
-    width: 100%;
-    padding-top: 5px;	
-}
+.tableImg{padding-top: 5px;}
 .centrar{text-align: center;}
 .izquierda{text-align: left;}
 .derecha{text-align: right;}

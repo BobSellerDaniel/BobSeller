@@ -32,7 +32,7 @@ public class ModulosService implements ModulosController {
 	private IndexAdminTablasDAO IndexAdminTablasDAO;
 
 	@Override
-	public String getHook(String hook, Model model, HttpServletRequest request) {
+	public String getHook(String hook, Model model, HttpServletRequest request){
 
 		this.request = request;
 		this.model = model;
@@ -105,7 +105,7 @@ public class ModulosService implements ModulosController {
 		crud.setFieldList(modulosDaos.findAll());
 		crud.setIdHTML("tablaAdmin");
 		crud.setImportData(true);
-
+		
 		model.addAttribute("BOB_LIST", crud.OuputHtml());
 
 	}

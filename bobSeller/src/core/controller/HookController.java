@@ -32,9 +32,6 @@ public class HookController{
 		
 		//Consultamos los modulos registrados para los hook disponibles para esta vista
 		List<mapeo_hook> hooks = mapeohookService.findVista(vista);
-		
-		System.out.println("Construllendo los hook ");
-		
 		//Recorremos los hook que estan inscritos a la vista
 		for (mapeo_hook hook:hooks) {
 			if(0 != "HOOKADMIN".compareTo(hook.getDisplay())) llamadoClaseModulo(hook,model,vista,modulo,request);
@@ -48,7 +45,6 @@ public class HookController{
 	
 	//Implementamos la funcion que nos permite acceder a los metodos implementados por los modulos
 	public void llamadoClaseModulo(mapeo_hook hook, Model model, String vista, String modulo, HttpServletRequest request) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{ 
-		
 		//Objeto tipo mapa para construir los modulos de cada Hook
 		Map<String, ArrayList<Map>> hookList = new HashMap<>();
 		
@@ -56,7 +52,6 @@ public class HookController{
 		String ModuloHook; 
 		
 		try {
-			System.out.println("entre a procesar hook");
 			//Array temporal para construir todas las rutas de los modulos
 			ArrayList<Map> temp = new ArrayList<Map>();
 		

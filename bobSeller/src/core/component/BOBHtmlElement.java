@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 public class BOBHtmlElement {
 
 		private BOBHtmlTag tag;
-		private String type;
+		private BOBHtmlInputType type;
 		private String id;
 		private String name;
 		private String value;
@@ -33,13 +33,14 @@ public class BOBHtmlElement {
 		private BOBFormat format;
 		private List<BOBHtmlElement> children;
 		private BOBHtmlElement wraper;
+		private String title;
 		
 		public BOBHtmlElement(){}
 		
-		public BOBHtmlElement(BOBHtmlTag tag, String type, String id, String name, String value, String cssClass, String backgroundColor,
+		public BOBHtmlElement(BOBHtmlTag tag, BOBHtmlInputType type, String id, String name, String value, String cssClass, String backgroundColor,
 				String width, String required, String label, String rows, String col, String content, String href, String recursoUrl,
 				String onclick, String onrollover, boolean isprimaryBD, boolean seleted, BOBFormat format, List<BOBHtmlElement> children,
-				BOBHtmlElement wraper) {
+				BOBHtmlElement wraper, String title) {
 			super();
 			this.tag = tag;
 			this.type = type;
@@ -63,6 +64,7 @@ public class BOBHtmlElement {
 			this.format = format;
 			this.children = children;
 			this.wraper = wraper;
+			this.title = title;
 		}
 
 		/**
@@ -76,24 +78,40 @@ public class BOBHtmlElement {
 		 */
 		public static BOBHtmlElement getTh(String label, boolean isprimaryBD, String id, String cssClass, String widths) {
 			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, null, cssClass, null, widths,
-					null, label, null, null, null, null, null, null, null, isprimaryBD, false, null, null, null);
+					null, label, null, null, null, null, null, null, null, isprimaryBD, false, null, null, null, null);
 			return th;
 		}
 		 
 		public static BOBHtmlElement getTab(String label, String id, String cssClass, String recursoUrl, String background, boolean seleted){
 			BOBHtmlElement tab = new BOBHtmlElement(BOBHtmlTag.tab, null, id, null, null, cssClass, background,
 					null,null, label, null, null, null, null, recursoUrl,
-					null, null, false, seleted,null, null,null);
+					null, null, false, seleted,null, null,null,null);
 			return tab;
 		} 
+		
+		public static BOBHtmlElement getInput(String label, String name, String title, String id, BOBHtmlInputType type, String required, String cssClass, String width){
+			BOBHtmlElement input = new BOBHtmlElement(BOBHtmlTag.input, type, id, name, null, cssClass, null,
+					width, required, label, null, null, null, null, null,
+					null, null, false, false, null, null,
+					null, title);				
+			return input;
+		}
+		
+		public static BOBHtmlElement getSelect(String label, String name, String title, String id, BOBHtmlTag tag, String required, String cssClass, String width, List<BOBHtmlElement> children){
+			BOBHtmlElement select = new BOBHtmlElement(tag, null, id, name, null, cssClass, null,
+			width, required, label, null, null, null, null, null,
+			null, null, false, false, null, children,
+			null, title);				
+			return select;
+		}
 		
 		public boolean drawIf(){return true;}
 		
 		public BOBHtmlTag getTag() {return tag;}
 		public void setTag(BOBHtmlTag tag) {this.tag = tag;}
 		
-		public String getType() {return type;}
-		public void setType(String type) {this.type = type;}
+		public BOBHtmlInputType getType() {return type;}
+		public void setType(BOBHtmlInputType type) {this.type = type;}
 		
 		public String getId() {return id;}
 		public void setId(String id) {this.id = id;}
@@ -155,6 +173,9 @@ public class BOBHtmlElement {
 		public boolean getSeleted() {return seleted;}
 		public void setSeleted(boolean seleted) {this.seleted = seleted;}
 
+		public String getTitle() {return title;}
+		public void setTitle(String title) {this.title = title;}
+
 		@Override
 		public String toString() {
 			return "BOBHtmlElement [tag=" + tag + ", type=" + type + ", id=" + id + ", name=" + name + ", value="
@@ -162,7 +183,6 @@ public class BOBHtmlElement {
 					+ ", required=" + required + ", label=" + label + ", rows=" + rows + ", col=" + col + ", content="
 					+ content + ", href=" + href + ", recursoUrl=" + recursoUrl + ", onclick=" + onclick
 					+ ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD + ", seleted=" + seleted
-					+ ", format=" + format + ", children=" + children + ", wraper=" + wraper + "]";
+					+ ", format=" + format + ", children=" + children + ", wraper=" + wraper + ", title=" + title + "]";
 		}
-		
 }
