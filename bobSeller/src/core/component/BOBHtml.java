@@ -3,6 +3,8 @@ package core.component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,9 +24,8 @@ public class BOBHtml {
 	private boolean saveCloseBt;
 	private boolean saveBt;
 	private boolean closeBt;
-	private List<BOBCRUD> crud;
-	private boolean isList;
-	private boolean isForm;
+	private Set<BOBCRUD> crud;
+
 	private List fieldList;
 	private List<BOBHtmlElement> theader;
 	private List<BOBHtmlElement> tabs;
@@ -35,21 +36,35 @@ public class BOBHtml {
 		String htmlOuput ="<div class='WrapperTablaList'>";
 		
 		htmlOuput += "<div class='TituloTop'><div class='tabs'>";
-		for(BOBHtmlElement tab: tabs){
-			htmlOuput += "<div class='tabMenus'>" 
-					+ "<a href='"+request.getRequestURL()+"?Vtab="+tab.getLabel()+"'><div class='tabTitulo' style='background-color:"+tab.getBackgroundColor()+";padding: 4px;' title='"+tab.getLabel()+"' >"
+		
+		String BackgroundColorTab = "#F8F8F8"; 
+		String requestVtab = "";
+		String nameTabs = "";
+		String vTabId = "";
+		if(tabs != null){
+			for(BOBHtmlElement tab: tabs){
+				htmlOuput += "<div class='tabMenus'>" 
+					+ "<a href='"+request.getRequestURL()+"?vtab="+tab.getId()+"'><div class='tabTitulo' style='background-color:"+tab.getBackgroundColor()+";padding: 4px;' title='"+tab.getLabel()+"' >"
 							+ "<img width='100%' src='"+tab.getRecursoUrl()+"' >"
 					+ "</div></a>"
 					+ "</div>";
-			if(tab.getSeleted()){
-				
+				if(tab.getSeleted()){
+					nameTabs = tab.getId();
+					BackgroundColorTab = "background-color:"+tab.getBackgroundColor()+"; opacity: 0.2;";
+					requestVtab = "<input type='hidden' name='vtab' value='"+tab.getId()+"'>";
+					vTabId = tab.getId();
+				}
 			}
 		}
 		
 		htmlOuput += "</div>";
-		htmlOuput += "<div class='TituloTabla' style=''>"+title+"</div></div>";
+		htmlOuput += "<div class='LabelTitulo'>"+title+"</div>";
+		htmlOuput += "<div class='TituloTabla' style='"+BackgroundColorTab+"'>&nbsp;</div></div>";
 		
 		htmlOuput += "<form id='"+idHTML+"' method='post' action='"+request.getRequestURL()+"'>";
+		htmlOuput += "<INPUT type='hidden' name='vfilterID' value='"+request.getParameter("vfilterID")+"' id='vfilterID'/>";
+		
+		htmlOuput += requestVtab;
 		
 		int NunPagin =  0;
 		int PaginaActual =  0;
@@ -63,36 +78,45 @@ public class BOBHtml {
 			PaginaSig = (PaginaActual < NunPagin)?PaginaActual+1:NunPagin;
 		}
 		
-		htmlOuput += "<div><div style='position: relative;float: left; padding: 10px;'><table><tr>";
-		htmlOuput += "<td>Pagina: "+PaginaActual+" / "+NunPagin+" "
+		
+		String paginador = "<div class='paginador'><div style='position: relative;float: left; padding: 10px;'><table><tr>";
+		paginador += "<td>Pagina: "+PaginaActual+" / "+NunPagin+" "
 				+ "<input type='image' src='../img/list-next.gif' onclick='enviarForm(\""+idHTML+"\",\"pagAct\",1)'>"
 				+ "&nbsp;&nbsp;<input type='image' src='../img/list-next2.gif' onclick='enviarForm(\""+idHTML+"\",\"ultPag\",1)'>"
 				+ "&nbsp;|&nbsp;Mostrar "
 				+ "<select name='order_pagination' onchange='submit()'>";
-		htmlOuput += (NunPagin >= 20)?"<option value='20' selected='selected'>20</option>":"<option value='1' selected='selected'>	1</option>";
-		htmlOuput += (NunPagin >= 50)?"<option value='50'>50</option>":"";
-		htmlOuput += (NunPagin >= 100)?"<option value='100'>100</option>":"";
-		htmlOuput += (NunPagin >= 300)?"<option value='300'>300</option>":""
+		paginador += (NunPagin >= 20)?"<option value='20' selected='selected'>20</option>":"<option value='1' selected='selected'>	1</option>";
+		paginador += (NunPagin >= 50)?"<option value='50'>50</option>":"";
+		paginador += (NunPagin >= 100)?"<option value='100'>100</option>":"";
+		paginador += (NunPagin >= 300)?"<option value='300'>300</option>":""
 				+ "</select>"
 				+ "&nbsp; / "+nunRegistro+" resultado(s)&nbsp;</td>";
 		
-		htmlOuput += "<input type='hidden' id='pagAct' name='pagAct' value='"+PaginaSig+"'> "
+		paginador += "<input type='hidden' id='pagAct' name='pagAct' value='"+PaginaSig+"'> "
 				  +  "<input type='hidden' id='ultPag'name='ultPag' value='"+NunPagin+"'>"
 				  +  "</tr></table></div><div style='position: relative; float: right; padding: 10px;'>"
-				  + "<input type='submit' id='submitFilterButtonproduct' name='submitFilter' value='Filtrar' class='button'>					"
-				  + "<input type='submit' name='submitResetproduct' value='Borrar filtro' class='button'>"
+				  + "<a href='"+request.getRequestURL()+"?vCrear="+nameTabs+"' class='button'>+ Crear</a>"
+				  + "&nbsp;<input type='submit' onclick='document.getElementById(\"vfilterID\").value=true;' name='vfilter' value='Filtrar'  class='button'>"
+				  + "&nbsp;<input type='submit' onclick='document.getElementById(\"vfilterID\").value=false;' name='vfilter' value='Borrar Filtro'  class='button'>"
 				  + "</div></div>";
+		
+		htmlOuput += paginador;
+		
 		htmlOuput += "<div id='tabla-"+idHTML+"' class='BobTablaList'><table ><tr>";
 				
 		int contCol = 0;
+		String primary = "";
 		for(BOBHtmlElement row: theader){
 			contCol++;
 			String Id = (row.getId() != "") ? row.getId() : "";
 			String cssClass = (row.getCssClass() != "") ? row.getCssClass() : "";
-			htmlOuput += "<th class='col-"+contCol+" ' style='width:"+row.getWidth()+"' id='th-"+Id+"'>"+row.getLabel()+"</th>";
+			htmlOuput += "<th class='col-"+contCol+" "+cssClass+"' style='width:"+row.getWidth()+"' id='th-"+Id+"'>"+row.getLabel()+"</th>";
+			if (row.getIsPrimaryDB()){
+				primary = row.getId();
+			}
 		}
 		
-		htmlOuput += "<th style='width:10%' id='AccTable' class='centrar' colspan='2'>Acciones</th>";		
+		htmlOuput += "<th style='width:10%' id='AccTable' class='centrar' colspan='"+crud.size()+"'>Acciones</th>";		
 		htmlOuput += "</tr><tr>";
 		
 		contCol = 0;
@@ -103,7 +127,19 @@ public class BOBHtml {
 					+ "<input type='text' id='input-"+Id+"' name='"+Id+"' title='Busca por: "+row.getLabel()+"' style='width:98%'></th>";
 		}
 		
-		htmlOuput += "<th style='width:10%' class='centrar'>Actu</th><th style='width:10%' class='centrar'>Elim</th>";	
+		String crudStr = "";
+		if (crud.contains(BOBCRUD.retrieve)){
+			htmlOuput += "<th style='width:10%' class='centrar'>--</th>";	
+			crudStr += "<td class='centrar'><a href='"+request.getRequestURL()+"?vIDRow=;ID;&vAction=view&vtab="+vTabId+"'><img src='../img/small/search.png' class='tableImg' /></a></td>";
+		}
+		if (crud.contains(BOBCRUD.update)){
+			htmlOuput += "<th style='width:10%' class='centrar'>--</th>";	
+			crudStr += "<td class='centrar'><a href='"+request.getRequestURL()+"?vIDRow=;ID;&vAction=edit&vtab="+vTabId+"'><img src='../img/small/compose-4.png' class='tableImg' /></a></td>";
+		}
+		if (crud.contains(BOBCRUD.delete)){
+			htmlOuput += "<th style='width:10%' class='centrar'>--</th>";	
+			crudStr += "<td class='centrar'><a href='"+request.getRequestURL()+"?vIDRow=;ID;&vAction=delete&vtab="+vTabId+"'><img src='../img/small/bin-3.png' class='tableImg' /></a></td>";
+		}
 		htmlOuput += "</tr></theader><tbody>";
 		
 		int contEstilo = 1;
@@ -135,18 +171,18 @@ public class BOBHtml {
 					if(values.get(rowTh.getId()) instanceof JSONObject){
 						JSONObject tmpObje = (JSONObject) values.get(rowTh.getId());
 						JSONObject tmpObjeId = (JSONObject) tmpObje.getJSONArray(JSONObject.getNames(tmpObje)[0]).get(0);
-						htmlOuput += "<td class='col-"+contCol+" "+rowTh.getCssClass()+"' style='width:"+rowTh.getWidth()+"'>"+tmpObjeId.get(JSONObject.getNames(tmpObjeId)[0])+"<div style='display:none;'>";
+						htmlOuput += "<td class='col-"+contCol+" "+rowTh.getCssClass()+" rollover' style='width:"+rowTh.getWidth()+"'>"+tmpObjeId.get(JSONObject.getNames(tmpObjeId)[0])+""
+								  + "<div style='display:none;'>";
 						htmlOuput += "<table>";
-						htmlOuput	+= tmpObje.getJSONArray(JSONObject.getNames(tmpObje)[0]).toString().replace("[", "").replace("]", "").replace(",", "").replace("{\"", "<tr><td>").replace("\":", "</td><td>").replace("}","</td></tr>").replace("\"", "");
-						htmlOuput	+= "</table></div></td>";
+						htmlOuput += tmpObje.getJSONArray(JSONObject.getNames(tmpObje)[0]).toString().replace("[", "").replace("]", "").replace(",", "").replace("{\"", "<tr><td>").replace("\":", "</td><td>").replace("}","</td></tr>").replace("\"", "");
+						htmlOuput += "</table></div></td>";
 					}
 					
 					else {
 						htmlOuput += "<td class='col-"+contCol+" "+rowTh.getCssClass()+"' style='width:"+rowTh.getWidth()+"'>"+values.get(rowTh.getId())+"</td>";
 					}
 				}
-				htmlOuput 	+= "<td class='centrar'><input type='image' src='../img/small/compose-4.png'></td>"
-							+ "<td class='centrar'><input type='image' src='../img/small/bin-3.png'></td>";
+				htmlOuput += crudStr.replaceAll(";ID;", values.get(primary).toString());				
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -155,7 +191,87 @@ public class BOBHtml {
 			htmlOuput += "</tr>";
 		}
 		
-		htmlOuput += "</table></div></form></div>";
+		htmlOuput += "</table></div>"+paginador+ "</form></div>";
+		return htmlOuput;
+	}
+	
+	public String OuputHtmlForm(){
+
+		if (fields == null){
+			return "EL elemento no cuenta con información para mostrar";			
+		}
+		
+		String htmlOuput ="	<div class='WrapperFormViewEdit'>";
+		htmlOuput += "			<div class='FormViewEditTitle'>";
+		htmlOuput += "				Algun titulo";
+		htmlOuput += "			</div>";
+		htmlOuput += "			<div class='FormViewEditDesc'>";
+		htmlOuput += "				Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción .....  Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... ";
+		htmlOuput += "			</div>";
+		htmlOuput += "			<div class='FormViewEdit'>";
+		htmlOuput += "				<ul>";
+		
+		for (BOBHtmlElement field : fields){
+			BOBHtmlTag tag = field.getTag();
+			String classs = field.getCssClass()==null?"":field.getCssClass();
+			String id = field.getId()==null?"":field.getId();
+			String label = field.getLabel()==null?"":field.getLabel();
+			String name = field.getName()==null?"":field.getName();
+			String onclick = field.getOnclick()==null?"":field.getOnclick();
+			String onRollOver = field.getOnrollover()==null?"":field.getOnrollover();
+			String required = field.getRequired()==null?"":field.getRequired();
+			String value = field.getValue()==null?"":field.getValue();
+			String width = field.getWidth()==null?"":field.getWidth();
+			String format = field.getFormat()==null?BOBFormat.string.name():field.getFormat().name();
+			boolean drawIf = true; // TODO IMPLEMENT
+			String backgroundColor = field.getBackgroundColor()==null?"":field.getBackgroundColor();
+			String cols = field.getCol()==null?"":field.getCol();
+			String content = field.getContent()==null?"":field.getContent();
+			String rows = field.getRows()==null?"":field.getRows();
+			//String value = field.()==null?"":field.getValue();
+			
+
+			htmlOuput += "				<li>";
+			htmlOuput += "				<span>"+label+":</span>";
+			if(tag.ordinal() == BOBHtmlTag.input.ordinal()){
+				
+				htmlOuput += "				<input value='agregar un input'/>";				
+			}else if (tag.ordinal() == BOBHtmlTag.select.ordinal()){
+				htmlOuput += "				<select>";								
+				htmlOuput += "					<option>agregar un select</option>";								
+				htmlOuput += "				</select>";								
+			}else if (tag.ordinal() == BOBHtmlTag.textarea.ordinal()){
+				htmlOuput += "				<textarea rows='"+field.getRows()+"' cols='"+field.getCol()+"'>agregar un textarea";				
+				htmlOuput += "				</textarea>";				
+			}
+			else{
+				htmlOuput += "				el tipo de elemento solicitado no esta diponible para formulario :(";				
+			}
+			htmlOuput += "				</li>";
+		}
+		htmlOuput += "				</ul>";
+		htmlOuput += "				<div class='FormViewEditButtons'>";
+		// determinar el botón save 
+		if (saveBt && (crud.contains(BOBCRUD.update) || crud.contains(BOBCRUD.create))){
+			htmlOuput += "				<div>";					
+			htmlOuput += "					<input type='button' value='Salvar'/>";					
+			htmlOuput += "				</div>";					
+		}
+		// determinar el botón Save and close 
+		if (saveCloseBt && (crud.contains(BOBCRUD.update) || crud.contains(BOBCRUD.create))){
+			htmlOuput += "				<div>";					
+			htmlOuput += "					<input type='button' value='Salvar y salir'/>";					
+			htmlOuput += "				</div>";					
+		}
+		// determinar el botón close 
+		if (closeBt){
+			htmlOuput += "				<div>";					
+			htmlOuput += "					<input type='button' value='salir'/>";					
+			htmlOuput += "				</div>";					
+		}
+		htmlOuput += "				</div>";		
+		htmlOuput += "			</div>";
+		htmlOuput += "		</div>";
 		return htmlOuput;
 	}
 	
@@ -186,14 +302,8 @@ public class BOBHtml {
 	public boolean isCloseBt() {return closeBt;}
 	public void setCloseBt(boolean closeBt) {this.closeBt = closeBt;}
 		
-	public List<BOBCRUD> getCrud() {return crud;}
-	public void setCrud(List<BOBCRUD> crud) {this.crud = crud;}
-	
-	public boolean getIsList() {return isList;}
-	public void setIsList(boolean isList) {this.isList = isList;}
-	
-	public boolean getIsForm() {return isForm;}
-	public void setIsForm(boolean isForm) {this.isForm = isForm;}
+	public Set<BOBCRUD> getCrud() {return crud;}
+	public void setCrud(Set<BOBCRUD> crud) {this.crud = crud;}
 	
 	public List getFieldList() {return fieldList;}
 	public void setFieldList(List fieldList) {this.fieldList = fieldList;}
@@ -221,8 +331,7 @@ public class BOBHtml {
 		return "BOBHtml [fields=" + fields + ", idHTML=" + idHTML + ", submit=" + submit + ", title=" + title
 				+ ", description=" + description + ", exportData=" + exportData + ", showPaginator=" + showPaginator
 				+ ", nunRegistro=" + nunRegistro + ", importData=" + importData + ", saveCloseBt=" + saveCloseBt
-				+ ", saveBt=" + saveBt + ", closeBt=" + closeBt + ", crud=" + crud + ", isList=" + isList + ", isForm="
-				+ isForm + ", fieldList=" + fieldList + ", theader=" + theader + ", tabs=" + tabs + ", request="
+				+ ", saveBt=" + saveBt + ", closeBt=" + closeBt + ", crud=" + crud + ", fieldList=" + fieldList + ", theader=" + theader + ", tabs=" + tabs + ", request="
 				+ request + "]";
 	}
 

@@ -128,7 +128,7 @@ public class BOBHtmlElement {
 		public String getOnrollover() {return onrollover;}
 		public void setOnrollover(String onrollover) {this.onrollover = onrollover;}
 		
-		public boolean isIsprimaryBD() {return isprimaryBD;}
+		public boolean getIsPrimaryDB() {return isprimaryBD;}
 		public void setIsprimaryBD(boolean isprimaryBD) {this.isprimaryBD = isprimaryBD;}
 		
 		public BOBFormat getFormat() {return format;}

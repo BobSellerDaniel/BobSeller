@@ -1,7 +1,10 @@
 package core.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,17 +37,20 @@ public class ModulosService implements ModulosController{
 		this.request = request;
 		this.model = model;
 		
-		String Vtab = (String)request.getParameter("Vtab");
+		String Vtab = (String)request.getParameter("vtab");
+		String VCrear = (String)request.getParameter("vCrear");
 		
-		if(0 == Vtab.compareTo("MODULOS")){menus("Administración de módulos",true,false,false); AdminModulos();}
-		else if(0 == Vtab.compareTo("HOOKS")){menus("Administración de Hooks",false,true,false); AdminHooks();}
-		else if(0 == Vtab.compareTo("VISTAS")){menus("Administración de Vistas",false,false,true); AdminVistas();}
-		else AdminModulos();
+		if((Vtab != null && 0 == "modulosTab".compareTo(Vtab)) || (VCrear != null && 0 == "modulosTab".compareTo(VCrear))){tabs("Administración de módulos",true,false,false); AdminModulos();}
+		else if((Vtab != null && 0 == "hooksTab".compareTo(Vtab)) || (VCrear != null && 0 == "hooksTab".compareTo(VCrear))){tabs("Administración de Hooks",false,true,false); AdminHooks();}
+		else if((Vtab != null && 0 == "vistasTab".compareTo(Vtab)) || (VCrear != null && 0 == "vistasTab".compareTo(VCrear))){tabs("Administración de Vistas",false,false,true); AdminVistas();}
+		else{tabs("Administración de módulos",true,false,false); AdminModulos();}
+		
+		model.addAttribute("BOB_LIST",crud.OuputHtml());
 		
 		return "modulos";
 	}
 	
-	public void menus(String titulo, boolean modulos, boolean hooks, boolean vistas){
+	public void tabs(String titulo, boolean modulos, boolean hooks, boolean vistas){
 		crud.setTitle(titulo);
 		List<BOBHtmlElement> tabs = new ArrayList<>();
 		tabs.add(BOBHtmlElement.getTab("MODULOS", "modulosTab", "tabs", "../img/big/modulos.png", "gold", modulos));
@@ -67,10 +73,10 @@ public class ModulosService implements ModulosController{
 		theader.add(BOBHtmlElement.getTh("ACL", false,"acl","centrar","15%"));
 		theader.add(BOBHtmlElement.getTh("Estado", false,"estado","centrar","5%"));
 		
-		crud.setIsForm(true);
+		
 		crud.setRequest(request);
 		crud.setTheader(theader);
-		List<BOBCRUD> crudlist = new ArrayList<>();
+		Set<BOBCRUD> crudlist = new HashSet();
 		crudlist.add(BOBCRUD.create);
 		crudlist.add(BOBCRUD.delete);
 		crudlist.add(BOBCRUD.retrieve);
@@ -82,8 +88,6 @@ public class ModulosService implements ModulosController{
 		crud.setFieldList(modulosDaos.findAll());
 		crud.setIdHTML("tablaAdmin");
 		crud.setImportData(true);
-				
-		model.addAttribute("BOB_LIST",crud.OuputHtml());
 	}
 	
 	public void AdminHooks(){
