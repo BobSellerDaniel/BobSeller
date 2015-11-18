@@ -7,5 +7,6 @@ import core.pojo.Modulos;
 public interface ModulosDAO {
 
 	public List<Modulos> findAll();
+	public List<Modulos> findByCriteria();
 	
 }

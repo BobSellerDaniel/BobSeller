@@ -26,4 +26,10 @@ public class ModulosDAOImpl implements ModulosDAO{
 		return crit.list();
 	}
 
+	@Override
+	public List<Modulos> findByCriteria() {
+		Criteria crit = getSession().createCriteria(Modulos.class);
+		return crit.list();
+	}
+
 }
