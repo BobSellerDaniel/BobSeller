@@ -30,6 +30,7 @@ public class BOBHtml {
 	private Class className;
 	private List fieldList;
 	private List<BOBHtmlElement> theader;
+	private List<BOBHtmlElement> fInputs;
 	private List<BOBHtmlElement> tabs;
 	private HttpServletRequest request;
 	
@@ -197,83 +198,38 @@ public class BOBHtml {
 		return htmlOuput;
 	}
 	
-	public String OuputHtmlForm(){
+	public String OuputHtmlForms(){
+		
+		String htmlOuput ="<div class='WrapperTablaList'>";
+		
+		htmlOuput += "<div class='TituloTop'>";
+		htmlOuput += "<div class='LabelTitulo'>"+title+"</div>";
+		htmlOuput += "<div class='TituloTabla'>&nbsp;</div></div>";
+		htmlOuput += "<form id='"+idHTML+"' method='post' action='"+request.getRequestURL()+"'>";
+		
+		String required = " ";
+		for(BOBHtmlElement Inputs: fInputs){
 
-		if (fields == null){
-			return "EL elemento no cuenta con información para mostrar";			
-		}
-		
-		String htmlOuput ="	<div class='WrapperFormViewEdit'>";
-		htmlOuput += "			<div class='FormViewEditTitle'>";
-		htmlOuput += "				Algun titulo";
-		htmlOuput += "			</div>";
-		htmlOuput += "			<div class='FormViewEditDesc'>";
-		htmlOuput += "				Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción .....  Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... Alguna descripción ..... ";
-		htmlOuput += "			</div>";
-		htmlOuput += "			<div class='FormViewEdit'>";
-		htmlOuput += "				<ul>";
-		
-		for (BOBHtmlElement field : fields){
-			BOBHtmlTag tag = field.getTag();
-			String classs = field.getCssClass()==null?"":field.getCssClass();
-			String id = field.getId()==null?"":field.getId();
-			String label = field.getLabel()==null?"":field.getLabel();
-			String name = field.getName()==null?"":field.getName();
-			String onclick = field.getOnclick()==null?"":field.getOnclick();
-			String onRollOver = field.getOnrollover()==null?"":field.getOnrollover();
-			String required = field.getRequired()==null?"":field.getRequired();
-			String value = field.getValue()==null?"":field.getValue();
-			String width = field.getWidth()==null?"":field.getWidth();
-			String format = field.getFormat()==null?BOBFormat.string.name():field.getFormat().name();
-			boolean drawIf = true; // TODO IMPLEMENT
-			String backgroundColor = field.getBackgroundColor()==null?"":field.getBackgroundColor();
-			String cols = field.getCol()==null?"":field.getCol();
-			String content = field.getContent()==null?"":field.getContent();
-			String rows = field.getRows()==null?"":field.getRows();
-			//String value = field.()==null?"":field.getValue();
+			if(Inputs.getTag() == BOBHtmlTag.input){
+				if(Inputs.getRequired()) required = " required";
+				htmlOuput += "<div class='inputForm'><label>"+Inputs.getTitle()+"</label><input type='"+Inputs.getType()+"' name='"+Inputs.getName()+"' id='"+Inputs.getId()+"' "+required+"/></div>";
+			}else{
+				if(Inputs.getTag() == BOBHtmlTag.select){
+					htmlOuput += "<div class='inputForm'><label>"+Inputs.getTitle()+"</label><select>";
+					htmlOuput += "</select>";
+				}
+			}
 			
-
-			htmlOuput += "				<li>";
-			htmlOuput += "				<span>"+label+":</span>";
-			if(tag.ordinal() == BOBHtmlTag.input.ordinal()){
-				
-				htmlOuput += "				<input value='agregar un input'/>";				
-			}else if (tag.ordinal() == BOBHtmlTag.select.ordinal()){
-				htmlOuput += "				<select>";								
-				htmlOuput += "					<option>agregar un select</option>";								
-				htmlOuput += "				</select>";								
-			}else if (tag.ordinal() == BOBHtmlTag.textarea.ordinal()){
-				htmlOuput += "				<textarea rows='"+field.getRows()+"' cols='"+field.getCol()+"'>agregar un textarea";				
-				htmlOuput += "				</textarea>";				
-			}
-			else{
-				htmlOuput += "				el tipo de elemento solicitado no esta diponible para formulario :(";				
-			}
-			htmlOuput += "				</li>";
+			System.out.println("  ------------------ ");
+			System.out.println("Tag: "+Inputs.getTag());
+			System.out.println("id: "+Inputs.getId());
+			System.out.println("value: "+Inputs.getValue());
+			System.out.println("contenido: "+Inputs.getContent());
+			System.out.println("Child: "+Inputs.getChildren());
+			
 		}
-		htmlOuput += "				</ul>";
-		htmlOuput += "				<div class='FormViewEditButtons'>";
-		// determinar el botón save 
-		if (saveBt && (crud.contains(BOBCRUD.update) || crud.contains(BOBCRUD.create))){
-			htmlOuput += "				<div>";					
-			htmlOuput += "					<input type='button' value='Salvar'/>";					
-			htmlOuput += "				</div>";					
-		}
-		// determinar el botón Save and close 
-		if (saveCloseBt && (crud.contains(BOBCRUD.update) || crud.contains(BOBCRUD.create))){
-			htmlOuput += "				<div>";					
-			htmlOuput += "					<input type='button' value='Salvar y salir'/>";					
-			htmlOuput += "				</div>";					
-		}
-		// determinar el botón close 
-		if (closeBt){
-			htmlOuput += "				<div>";					
-			htmlOuput += "					<input type='button' value='salir'/>";					
-			htmlOuput += "				</div>";					
-		}
-		htmlOuput += "				</div>";		
-		htmlOuput += "			</div>";
-		htmlOuput += "		</div>";
+		
+		htmlOuput += "</form></div>";
 		return htmlOuput;
 	}
 	
@@ -330,6 +286,9 @@ public class BOBHtml {
 	
 	
 
+
+	public List<BOBHtmlElement> getfInputs() {return fInputs;}
+	public void setfInputs(List<BOBHtmlElement> fInputs) {this.fInputs = fInputs;}
 
 	@Override
 	public String toString() {

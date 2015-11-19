@@ -1,8 +1,15 @@
 package core.component;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /** Modelado de un elemento HTML:  la presente clase se transfiere a la vista y tiene como finalidad describir todos los 
@@ -19,7 +26,7 @@ public class BOBHtmlElement {
 		private String cssClass;
 		private String backgroundColor;
 		private String width;
-		private String required;
+		private boolean required;
 		private String label;
 		private String rows;
 		private String col;
@@ -31,15 +38,15 @@ public class BOBHtmlElement {
 		private boolean isprimaryBD;
 		private boolean seleted;
 		private BOBFormat format;
-		private List<BOBHtmlElement> children;
+		private List children;
 		private BOBHtmlElement wraper;
 		private String title;
 		
 		public BOBHtmlElement(){}
 		
 		public BOBHtmlElement(BOBHtmlTag tag, BOBHtmlInputType type, String id, String name, String value, String cssClass, String backgroundColor,
-				String width, String required, String label, String rows, String col, String content, String href, String recursoUrl,
-				String onclick, String onrollover, boolean isprimaryBD, boolean seleted, BOBFormat format, List<BOBHtmlElement> children,
+				String width, boolean required, String label, String rows, String col, String content, String href, String recursoUrl,
+				String onclick, String onrollover, boolean isprimaryBD, boolean seleted, BOBFormat format, List children,
 				BOBHtmlElement wraper, String title) {
 			super();
 			this.tag = tag;
@@ -78,32 +85,65 @@ public class BOBHtmlElement {
 		 */
 		public static BOBHtmlElement getTh(String label, boolean isprimaryBD, String id, String cssClass, String widths) {
 			BOBHtmlElement th = new BOBHtmlElement(BOBHtmlTag.th, null, id, null, null, cssClass, null, widths,
-					null, label, null, null, null, null, null, null, null, isprimaryBD, false, null, null, null, null);
+					false, label, null, null, null, null, null, null, null, isprimaryBD, false, null, null, null, null);
 			return th;
 		}
 		 
 		public static BOBHtmlElement getTab(String label, String id, String cssClass, String recursoUrl, String background, boolean seleted){
 			BOBHtmlElement tab = new BOBHtmlElement(BOBHtmlTag.tab, null, id, null, null, cssClass, background,
-					null,null, label, null, null, null, null, recursoUrl,
+					null,false, label, null, null, null, null, recursoUrl,
 					null, null, false, seleted,null, null,null,null);
 			return tab;
 		} 
 		
-		public static BOBHtmlElement getInput(String label, String name, String title, String id, BOBHtmlInputType type, String required, String cssClass, String width){
+		public static BOBHtmlElement getInput(String label, String name, String title, String id, BOBHtmlInputType type, boolean required, String cssClass, String width){
 			BOBHtmlElement input = new BOBHtmlElement(BOBHtmlTag.input, type, id, name, null, cssClass, null,
 					width, required, label, null, null, null, null, null,
-					null, null, false, false, null, null,
+					null, null, false, false, null,null,
 					null, title);				
 			return input;
 		}
 		
-		public static BOBHtmlElement getSelect(String label, String name, String title, String id, BOBHtmlTag tag, String required, String cssClass, String width, List<BOBHtmlElement> children){
+		public static BOBHtmlElement getSelect(String label, String name, String title, String id, BOBHtmlTag tag, boolean required, String cssClass, String width, List children, String childrenId, String childrenTitle, String childrenIdSeletc){
+						
 			BOBHtmlElement select = new BOBHtmlElement(tag, null, id, name, null, cssClass, null,
 			width, required, label, null, null, null, null, null,
-			null, null, false, false, null, children,
-			null, title);				
+			null, null, false, false, null, new ArrayList(),
+			null, title);
+			
+			for(Object row: children){
+				try { 
+					
+					JSONObject obj = new JSONObject(row.toString());
+					JSONArray array = obj.getJSONArray(row.getClass().getSimpleName());
+					Map<String,Object> values = new HashMap<String, Object>();
+					
+					for(int i = 0 ; i < array.length() ; i++){
+						values.put(JSONObject.getNames(array.getJSONObject(i))[0], 
+								array.getJSONObject(i).get(JSONObject.getNames(array.getJSONObject(i))[0]));
+					}
+										
+					BOBHtmlElement selectOption = new BOBHtmlElement();
+					selectOption.setTag(BOBHtmlTag.options);
+					selectOption.setId(id+"-"+values.get(childrenId));
+					selectOption.setValue(values.get(childrenId).toString());
+					System.out.println("2");
+					selectOption.setContent(values.get(childrenTitle).toString());
+					
+					if(values.get(childrenId) != null && childrenIdSeletc != null && 0 == values.get(childrenId).toString().compareTo(childrenIdSeletc)){
+						selectOption.setSeleted(true);
+					}else{
+						selectOption.setSeleted(false);
+					}
+					System.out.println("3");
+					select.getChildren().add(selectOption);
+					
+				} catch (Exception e) { System.out.println("Execpcion error "+e);}
+			}
+						
 			return select;
 		}
+
 		
 		public boolean drawIf(){return true;}
 		
@@ -122,8 +162,8 @@ public class BOBHtmlElement {
 		public String getValue() {return value;}
 		public void setValue(String value) {this.value = value;}
 		
-		public String getRequired() {return required;}
-		public void setRequired(String required) {this.required = required;}
+		public boolean getRequired() {return required;}
+		public void setRequired(boolean required) {this.required = required;}
 		
 		public String getLabel() {return label;}
 		public void setLabel(String label) {this.label = label;}
@@ -176,6 +216,7 @@ public class BOBHtmlElement {
 		public String getTitle() {return title;}
 		public void setTitle(String title) {this.title = title;}
 
+
 		@Override
 		public String toString() {
 			return "BOBHtmlElement [tag=" + tag + ", type=" + type + ", id=" + id + ", name=" + name + ", value="
@@ -183,6 +224,10 @@ public class BOBHtmlElement {
 					+ ", required=" + required + ", label=" + label + ", rows=" + rows + ", col=" + col + ", content="
 					+ content + ", href=" + href + ", recursoUrl=" + recursoUrl + ", onclick=" + onclick
 					+ ", onrollover=" + onrollover + ", isprimaryBD=" + isprimaryBD + ", seleted=" + seleted
-					+ ", format=" + format + ", children=" + children + ", wraper=" + wraper + ", title=" + title + "]";
+					+ ", format=" + format + ", children=" + children
+					+ ", wraper=" + wraper
+					+ ", title=" + title + "]";
 		}
+
+		
 }

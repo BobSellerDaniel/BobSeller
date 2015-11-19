@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -34,7 +35,6 @@ public class MenusService implements ModulosController{
 	private IndexAdminTablasDAO IndexAdminTablasDAO;
 	
 	public String getHook(String hook, Model model, HttpServletRequest request) {
-		
 		this.request = request;
 		this.model = model;
 	
@@ -43,7 +43,6 @@ public class MenusService implements ModulosController{
 			return "menu";
 		}
 		else return ConstructorHTML();
-		
 	}
 	
 	public String ConstructorHTML(){
@@ -63,11 +62,26 @@ public class MenusService implements ModulosController{
 	
 	private void tabs(String titulo, boolean b, boolean c, boolean d) {crud.setTitle(titulo);}
 
-	private void CrearMenus() {
-		List<BOBHtmlElement> tInputs = new ArrayList<>();
-		tInputs.add(BOBHtmlElement.getInput("Id", "Menu", "Menu", "idMenu",BOBHtmlInputType.text, true, "", ""));
+	private void CrearMenus(){
 		
-		model.addAttribute("BOB_LIST", "crear");
+		List<BOBHtmlElement> tInputs = new ArrayList<>();
+		tInputs.add(BOBHtmlElement.getInput("Id", "Menu", "Menu", "menu-idMenu", BOBHtmlInputType.text, true, "", ""));
+		
+		tInputs.add(BOBHtmlElement.getSelect("Padre", "idPadre", "Menu Padre", "menu-idPadre", BOBHtmlTag.select, true, "", "", menusDao.findAll(),"idMenu","titulo",(String)request.getAttribute("idMenu")));
+		
+		tInputs.add(BOBHtmlElement.getInput("Nombre", "nombre", "Nombre", "menu-nombre", BOBHtmlInputType.text, true, "", ""));	
+		tInputs.add(BOBHtmlElement.getInput("Titulo", "titulo", "Titulo", "menu-titulo", BOBHtmlInputType.text, true, "", ""));
+		tInputs.add(BOBHtmlElement.getInput("Descripcion", "descripcion", "Descripcion", "menu-descripcion", BOBHtmlInputType.text, true, "", ""));
+		tInputs.add(BOBHtmlElement.getInput("Icono", "icono", "Icono", "menu-icono", BOBHtmlInputType.text, true, "", ""));
+		tInputs.add(BOBHtmlElement.getInput("Orden", "orden", "Orden", "menu-orden", BOBHtmlInputType.text, true, "", ""));
+		tInputs.add(BOBHtmlElement.getInput("Estado", "estado", "Estado", "menu-estado", BOBHtmlInputType.text, true, "", ""));
+		
+		crud.setfInputs(tInputs);
+		crud.setRequest(request);
+		crud.setDescription("cualquier cosa");
+		crud.setIdHTML("FormHtml");
+		
+		model.addAttribute("BOB_LIST", crud.OuputHtmlForms());
 	}
 		
 	private void ListarMenus() {
